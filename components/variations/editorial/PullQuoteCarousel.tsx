@@ -46,7 +46,7 @@ export default function PullQuoteCarousel() {
         </div>
 
         {/* Testimonial text */}
-        <div className="min-h-[180px] flex items-center justify-center">
+        <div className="min-h-[200px] flex items-center justify-center">
           <AnimatePresence mode="wait">
             <motion.blockquote
               key={index}

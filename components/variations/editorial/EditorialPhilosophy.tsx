@@ -47,7 +47,7 @@ export default function EditorialPhilosophy() {
               <h3 className="font-[var(--font-heading)] text-[22px] font-semibold text-cream mb-3">
                 {pillar.name}
               </h3>
-              <p className="text-[15px] text-cream/65 leading-relaxed">
+              <p className="text-[15px] text-cream/70 leading-relaxed">
                 {pillar.desc}
               </p>
             </motion.div>

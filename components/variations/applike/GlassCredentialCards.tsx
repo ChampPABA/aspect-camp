@@ -23,7 +23,7 @@ const tagStyles: Record<string, { bg: string; text: string; border: string }> = 
 
 export default function GlassCredentialCards() {
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6">
       {CREDENTIALS.map((cred, i) => {
         const style = tagStyles[cred.tagColor] ?? tagStyles.teal;
         return (

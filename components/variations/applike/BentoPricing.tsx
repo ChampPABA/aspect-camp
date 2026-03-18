@@ -75,9 +75,7 @@ export default function BentoPricing() {
             <div className="mt-auto pt-2">
               <Button
                 href={LINE_URL}
-                variant={
-                  tier.ctaVariant === "outline-navy" ? "outline-white" : tier.ctaVariant
-                }
+                variant={tier.ctaVariant}
                 size="sm"
                 className="w-full justify-center"
               >

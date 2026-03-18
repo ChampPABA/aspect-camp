@@ -159,7 +159,7 @@ export default function Home() {
 
       {/* S6: Philosophy + Credentials */}
       <SectionWrapper bg="navy" hasGlow>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-14 items-start">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-14 items-start">
           <FadeUp>
             <Eyebrow variant="gold">แนวทางของเรา</Eyebrow>
             <h2 className="font-[var(--font-heading)] text-[clamp(26px,3.5vw,40px)] font-semibold text-white leading-[1.2] mt-3 mb-4">
@@ -206,7 +206,7 @@ export default function Home() {
 
       {/* S7: Timeline + Schedule */}
       <SectionWrapper bg="white" id="schedule">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-14 items-start">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-14 items-start">
           <FadeUp>
             <Eyebrow>กำหนดการ</Eyebrow>
             <h2 className="font-[var(--font-heading)] text-[clamp(28px,4vw,44px)] font-semibold text-gray-text leading-[1.2] mt-3 mb-3.5">
@@ -358,7 +358,7 @@ export default function Home() {
             <Button href={LINE_URL} size="lg">
               สมัครเข้าร่วมค่าย →
             </Button>
-            <Button href="#" variant="outline-white">
+            <Button href={LINE_URL} variant="outline-white">
               📄 Download Brochure
             </Button>
             <Button href={LINE_URL} variant="outline-white">

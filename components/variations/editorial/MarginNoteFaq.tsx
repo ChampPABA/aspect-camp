@@ -43,7 +43,7 @@ export default function MarginNoteFaq() {
 
                       {/* Answer — right col ~60%, collapsed on mobile unless open */}
                       <div
-                        className={`text-[14px] text-gray-text leading-relaxed ${
+                        className={`text-[14px] text-gray-text leading-relaxed max-w-[520px] ${
                           isOpen ? "block" : "hidden md:block"
                         } ${!isOpen ? "line-clamp-1 text-gray-muted" : ""}`}
                       >

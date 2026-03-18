@@ -12,7 +12,7 @@ export default function SpeakerRow() {
         {SPEAKERS.map((speaker, i) => (
           <div
             key={i}
-            className="relative flex-shrink-0 w-[200px]"
+            className="relative flex-shrink-0 w-[180px] min-w-[180px]"
             onMouseEnter={() => setHoveredIndex(i)}
             onMouseLeave={() => setHoveredIndex(null)}
           >
@@ -45,7 +45,7 @@ export default function SpeakerRow() {
 
               {/* Role */}
               <div
-                className="text-[11px] text-gray-muted leading-snug whitespace-pre-line"
+                className="text-[11px] text-gray-muted leading-snug whitespace-pre-line break-words"
               >
                 {speaker.role}
               </div>

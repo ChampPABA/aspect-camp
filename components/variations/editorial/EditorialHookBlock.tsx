@@ -37,7 +37,7 @@ export default function EditorialHookBlock() {
               {/* Content — left or right aligned based on index */}
               <motion.div
                 className={`relative z-10 max-w-[580px] ${isEven ? "ml-auto" : ""}`}
-                initial={{ opacity: 0, x: isEven ? 40 : -40 }}
+                initial={{ opacity: 0, x: isEven ? 20 : -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.7 }}

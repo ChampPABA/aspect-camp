@@ -330,7 +330,7 @@ export const PRICING_TIERS = [
     price: "2,750",
     priceColor: "",
     originalPrice: "5,500",
-    ctaVariant: "outline-navy" as const,
+    ctaVariant: "outline-white" as const,
   },
   {
     tier: "🐦 Early Bird",
@@ -350,7 +350,7 @@ export const PRICING_TIERS = [
     price: "5,500",
     priceColor: "",
     originalPrice: "",
-    ctaVariant: "outline-navy" as const,
+    ctaVariant: "outline-white" as const,
   },
 ] as const;
 

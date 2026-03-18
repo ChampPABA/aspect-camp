@@ -17,7 +17,7 @@ function FlipCard({ audience }: { audience: (typeof TARGET_AUDIENCES)[number] })
   return (
     <div
       className="relative cursor-pointer"
-      style={{ height: 340, perspective: 1200 }}
+      style={{ height: 320, perspective: 1200 }}
       onMouseEnter={() => setFlipped(true)}
       onMouseLeave={() => setFlipped(false)}
       onClick={() => setFlipped((f) => !f)}
@@ -51,7 +51,10 @@ function FlipCard({ audience }: { audience: (typeof TARGET_AUDIENCES)[number] })
           </div>
           <div className="flex items-center justify-between">
             <span className="text-[12px] text-white/35">{audience.source}</span>
-            <span className="text-[11px] text-white/20">hover →</span>
+            <span className="text-[11px] text-white/20">
+              <span className="hidden md:inline">hover →</span>
+              <span className="md:hidden">tap →</span>
+            </span>
           </div>
         </div>
 

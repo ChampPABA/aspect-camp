@@ -100,7 +100,7 @@ export default function EditorialPricing() {
                 </div>
 
                 {/* Condition */}
-                <div className="text-[12px] leading-snug text-cream/50">
+                <div className="text-[12px] leading-snug text-cream/60">
                   {tier.condition}
                 </div>
 
