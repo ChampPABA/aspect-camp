@@ -1,0 +1,496 @@
+# Design Extraction: medchic
+# Extracted: 2026-03-17T23:50:00Z
+# URL: https://center.med.cmu.ac.th/medchic/
+
+meta:
+  site_name: "medchic"
+  url: "https://center.med.cmu.ac.th/medchic/"
+  extracted_at: "2026-03-17T23:50:00Z"
+  extractor_version: "2.1.0"
+  coverage:
+    total_sections: 17
+    detected_sections: 14
+    percentage: 82
+    missing:
+      - "form_patterns"
+      - "loading_states"
+      - "feedback_states"
+
+psychology:
+  style_classification: "Modern SaaS"
+
+  brand_personality: ["professional", "warm", "creative", "bold"]
+
+  emotions_evoked:
+    - emotion: "Trust"
+      reason: "Institutional teal branding combined with clean white backgrounds and structured layout conveys medical credibility"
+    - emotion: "Innovation"
+      reason: "Hero video background with dynamic content and modern typography signals forward-thinking approach"
+    - emotion: "Community"
+      reason: "Group photography in hero and people-focused section headings create belonging"
+    - emotion: "Approachability"
+      reason: "Rounded pill buttons, friendly LINE Seed Sans Thai font, and warm color accents soften the institutional feel"
+
+  target_audience:
+    primary:
+      description: "Medical professionals, researchers, and students at Chiang Mai University interested in health innovation"
+      age_range: "22-45"
+      tech_savvy: "medium-high"
+    secondary:
+      description: "Healthcare startups and innovators seeking incubation and collaboration"
+      age_range: "25-50"
+      tech_savvy: "high"
+
+  visual_principles:
+    - name: "Institutional Teal Identity"
+      description: "#009F9E teal used as primary brand color across navigation, buttons, text headings — creates strong medical/innovation identity"
+    - name: "Pill-shaped CTAs"
+      description: "40px border-radius buttons with generous padding create friendly, approachable interaction points"
+    - name: "Card-based Content"
+      description: "Rounded 22px cards with subtle shadows organize programs and services into scannable blocks"
+    - name: "Video Hero"
+      description: "Autoplay background video with overlay text creates dynamic first impression"
+
+  why_it_works:
+    - "Teal color bridges medical trust with innovation energy — neither too cold nor too warm"
+    - "LINE Seed Sans Thai font provides excellent Thai readability while feeling modern and friendly"
+    - "Pill-shaped buttons feel approachable while maintaining professional credibility"
+    - "Card hover animations (translateY -15px + shadow increase) add satisfying interactivity"
+    - "Structured navigation with clear program categories reduces cognitive load for diverse audience"
+
+  design_philosophy:
+    core_belief: "Health innovation should feel accessible, trustworthy, and community-driven"
+    key_principles:
+      - "Institutional credibility with modern warmth"
+      - "Community-centered visual storytelling"
+      - "Clear program hierarchy through card-based organization"
+      - "Thai-first typography with English secondary"
+
+sections:
+  overview:
+    detected: true
+    style: "Modern SaaS"
+    tech_stack: "WordPress, GenerateBlocks, Font Awesome 6, LINE Seed Sans TH"
+
+  color_palette:
+    detected: true
+    primary:
+      - hex: "#009F9E"
+        rgb: "rgb(0, 159, 158)"
+        usage: "brand-primary / teal"
+        count: 110
+      - hex: "#ffffff"
+        rgb: "rgb(255, 255, 255)"
+        usage: "background / cards"
+        count: 25
+      - hex: "#353C32"
+        rgb: "rgb(53, 60, 50)"
+        usage: "dark contrast / body text"
+        count: 44
+      - hex: "#e3e8e5"
+        rgb: "rgb(227, 232, 229)"
+        usage: "base / muted background"
+        count: 1
+    text_colors:
+      - hex: "#009F9E"
+        usage: "primary-text / headings / links"
+        count: 110
+      - hex: "#353C32"
+        usage: "body-text / contrast"
+        count: 44
+      - hex: "#000000"
+        usage: "heading-text-dark"
+        count: 43
+      - hex: "#ffffff"
+        usage: "text-on-teal / overlay text"
+        count: 3
+    border_colors: []
+    accent_colors:
+      - hex: "#28B88F"
+        usage: "accent-1 (green-teal)"
+      - hex: "#22D09F"
+        usage: "accent-2 (bright mint)"
+      - hex: "#11644D"
+        usage: "accent-3 (deep green)"
+      - hex: "#012F22"
+        usage: "accent-4 (darkest green)"
+      - hex: "#FFA900"
+        usage: "accent-5 (amber)"
+      - hex: "#FF4D00"
+        usage: "accent-6 (orange)"
+      - hex: "#67837B"
+        usage: "contrast-alt (muted sage)"
+      - hex: "#CCCFCD"
+        usage: "line (divider)"
+      - hex: "#15635E"
+        usage: "dark-base (dark teal)"
+      - hex: "#DBE4E0"
+        usage: "dark-contrast (light sage)"
+
+  typography:
+    detected: true
+    fonts:
+      - "LINE Seed Sans TH"
+      - "Font Awesome 6 Brands"
+      - "Font Awesome 6 Free"
+    weights: ["400", "600", "700"]
+    sizes: ["13px", "14px", "15px", "16px", "18px", "20px", "24px", "56px"]
+    size_scale_fluid:
+      small: "clamp(0.875rem, 0.875rem + ((1vw - 0.2rem) * 0.115), 0.9375rem)"
+      medium: "clamp(1rem, 1rem + ((1vw - 0.2rem) * 0.227), 1.125rem)"
+      large: "clamp(1.25rem, 1.25rem + ((1vw - 0.2rem) * 0.455), 1.5rem)"
+      x-large: "clamp(1.375rem, 1.375rem + ((1vw - 0.2rem) * 0.682), 1.75rem)"
+      xx-large: "clamp(1.75rem, 1.75rem + ((1vw - 0.2rem) * 0.909), 2.25rem)"
+    h1:
+      - text: "ศูนย์นวัตกรรมสุขภาพ"
+        fontSize: "24px"
+        fontWeight: "700"
+        fontFamily: "\"LINE Seed Sans TH\""
+        lineHeight: "26.4px"
+    h2:
+      - text: "People Who Drive Health Innovation"
+        fontSize: "56px"
+        fontWeight: "700"
+        fontFamily: "\"LINE Seed Sans TH\""
+        lineHeight: "67.2px"
+    h3:
+      - text: "MED CHICKATHON 2026"
+        fontSize: "20px"
+        fontWeight: "700"
+        fontFamily: "\"LINE Seed Sans TH\""
+        lineHeight: "26px"
+    body:
+      - fontSize: "13px"
+        fontWeight: "400"
+        lineHeight: "13px"
+    nav:
+      - fontSize: "15px"
+        fontWeight: "600"
+        lineHeight: "13.5px"
+
+  spacing_system:
+    detected: true
+    grid_base: 4
+    common_values: [8, 10, 12, 15, 20, 32]
+    paddings: ["1px", "7.5px", "8px", "10px", "12px", "12.75px", "15px", "20px", "32px"]
+    margins: ["13px", "24px", "31.5px", "90px"]
+    gaps: ["6px", "20px"]
+    fluid_spacing:
+      s20: "clamp(0.25rem, 0.65vw, 0.375rem)"
+      s30: "clamp(0.5rem, 1.3vw, 0.75rem)"
+      s40: "clamp(1rem, 2.6vw, 1.5rem)"
+      s50: "clamp(1.25rem, 3.2vw, 2rem)"
+      s60: "clamp(1.5rem, 3.9vw, 2.25rem)"
+      s70: "clamp(2rem, 5.2vw, 3rem)"
+      s80: "clamp(3rem, 7.8vw, 4.5rem)"
+
+  component_styles:
+    detected: true
+    buttons:
+      - id: "button-8"
+        text: "InnoHealth Program"
+        backgroundColor: "rgb(0, 159, 158)"
+        color: "rgb(255, 255, 255)"
+        padding: "12px 28px"
+        borderRadius: "40px"
+        fontSize: "18px"
+        fontWeight: "600"
+        transition: "0.35s"
+        boxShadow: "rgba(0, 0, 0, 0.12) 0px 12px 28px 0px"
+        hover_animation: "Opacity 0.9 + potential scale"
+      - id: "button-9"
+        text: "Activities for Support & Networking"
+        backgroundColor: "rgb(241, 241, 241)"
+        color: "rgb(0, 159, 158)"
+        padding: "12px 28px"
+        borderRadius: "40px"
+        fontSize: "18px"
+        fontWeight: "600"
+        transition: "0.35s"
+        boxShadow: "rgba(0, 0, 0, 0.08) 0px 6px 15px 0px"
+        hover_animation: "Background changes to teal, text to white, scale 1.05"
+      - id: "button-10"
+        text: "Community Online"
+        backgroundColor: "rgb(241, 241, 241)"
+        color: "rgb(0, 159, 158)"
+        padding: "12px 28px"
+        borderRadius: "40px"
+        fontSize: "18px"
+        fontWeight: "600"
+        transition: "0.35s"
+        boxShadow: "rgba(0, 0, 0, 0.08) 0px 6px 15px 0px"
+        hover_animation: "Background changes to teal, text to white, scale 1.05"
+    nav_buttons:
+      - text: "About MEDCHIC / Program & Service / Innovation Portfolio / News & Blog / Get Involved"
+        backgroundColor: "transparent"
+        color: "rgb(0, 159, 158)"
+        fontSize: "15px"
+        fontWeight: "600"
+        hover_animation: "Color changes to rgb(71, 190, 157)"
+    cards:
+      - id: "card-5"
+        backgroundColor: "rgb(255, 255, 255)"
+        padding: "25px 22px"
+        borderRadius: "22px"
+        boxShadow: "rgba(0, 0, 0, 0.06) 0px 12px 28px 0px"
+        transition: "0.3s"
+        hover_animation: "translateY(-15px) + shadow increases to rgba(0,0,0,0.2) 0px 25px 45px"
+      - id: "card-6"
+        backgroundColor: "transparent"
+        padding: "0px"
+        borderRadius: "20px"
+        transition: "0.5s"
+        hover_animation: "translateY(-8px) + shadow rgba(0,0,0,0.14) 0px 18px 40px"
+    inputs: []
+
+  shadows_elevation:
+    detected: true
+    values:
+      - "0px 1px 3px rgba(0, 0, 0, 0.1), 0px 1px 2px -1px rgba(0, 0, 0, 0.1)"
+      - "0px 6px 15px rgba(0, 0, 0, 0.08)"
+      - "0px 12px 28px rgba(0, 0, 0, 0.06)"
+      - "0px 12px 28px rgba(0, 0, 0, 0.12)"
+      - "0px 25px 45px rgba(0, 0, 0, 0.2)"
+    wp_preset_shadows:
+      natural: "6px 6px 9px rgba(0, 0, 0, 0.2)"
+      deep: "12px 12px 50px rgba(0, 0, 0, 0.4)"
+      sharp: "6px 6px 0px rgba(0, 0, 0, 0.2)"
+      outlined: "6px 6px 0px -3px rgb(255, 255, 255), 6px 6px rgb(0, 0, 0)"
+      crisp: "6px 6px 0px rgb(0, 0, 0)"
+
+  animations_transitions:
+    detected: true
+    keyframes:
+      - name: "fadeInLeft"
+        css: "@keyframes fadeInLeft { 0% { opacity: 0; transform: translateX(-40px); } 100% { opacity: 1; transform: translateX(0px); } }"
+      - name: "popupFade"
+        css: "@keyframes popupFade { 0% { opacity: 0; transform: translateY(30px); } 100% { opacity: 1; transform: none; } }"
+      - name: "turn-on-visibility"
+        css: "@keyframes turn-on-visibility { 0% { opacity: 0; } 100% { opacity: 1; } }"
+      - name: "turn-off-visibility"
+        css: "@keyframes turn-off-visibility { 0% { opacity: 1; visibility: visible; } 99% { opacity: 0; visibility: visible; } 100% { opacity: 0; visibility: hidden; } }"
+      - name: "lightbox-zoom-in"
+        css: "@keyframes lightbox-zoom-in { ... } (WordPress lightbox)"
+      - name: "lightbox-zoom-out"
+        css: "@keyframes lightbox-zoom-out { ... } (WordPress lightbox)"
+      - name: "overlay-menu__fade-in-animation"
+        css: "@keyframes overlay-menu__fade-in-animation { 0% { opacity: 0; transform: translateY(0.5em); } 100% { opacity: 1; transform: translateY(0px); } }"
+    fa_keyframes:
+      - "fa-beat"
+      - "fa-bounce"
+      - "fa-fade"
+      - "fa-beat-fade"
+      - "fa-flip"
+      - "fa-shake"
+      - "fa-spin"
+    transitions:
+      - duration: "0.3s"
+        usage: "cards"
+      - duration: "0.35s"
+        usage: "buttons / tab-btns"
+      - duration: "0.5s"
+        usage: "image cards"
+    libraries:
+      - name: "gsap"
+        detected: false
+      - name: "framer-motion"
+        detected: false
+      - name: "lottie"
+        detected: false
+    scroll_animations:
+      system: "none"
+      count: 0
+    background_media:
+      videos: 1
+      animated_gifs: 0
+      lottie_players: 0
+
+  border_radius:
+    detected: true
+    values: ["0px 0px 8px 8px", "20px", "22px", "40px"]
+
+  border_styles:
+    detected: true
+    widths: []
+    colors: []
+    notes: "Borderless design — no visible borders detected on elements"
+
+  layout_patterns:
+    detected: true
+    container_width: "1100px"
+    outer_container: "1280px"
+    content_size: "750px"
+    wide_size: "1200px"
+    grid_columns: null
+    breakpoints: []
+
+  icons_imagery:
+    detected: true
+    system: "icon-font"
+    icon_font: "Font Awesome 6 (Free + Brands)"
+    svg_count: 11
+    fa_icon_count: 19
+    common_sizes: ["24px"]
+    viewBoxes: ["0 0 24 24", "0 0 12 12", "0 0 32 32"]
+    notable_icons:
+      - "fas fa-envelope"
+      - "fab fa-line"
+      - "fab fa-facebook-f"
+      - "fab fa-tiktok"
+      - "fas fa-comment-dots"
+      - "fas fa-stethoscope"
+      - "fa-solid fa-rocket fa-2xl"
+      - "fa-solid fa-seedling fa-2xl"
+      - "fa-solid fa-lightbulb fa-2xl"
+      - "fa-solid fa-house-chimney-medical fa-2xl"
+
+  form_patterns:
+    detected: false
+
+  loading_states:
+    detected: false
+
+  feedback_states:
+    detected: false
+
+  accessibility:
+    detected: true
+    focus_styles:
+      - element: "a"
+        style: "outline: auto 0px (color-matched)"
+      - element: "button"
+        style: "outline: none 0px"
+    aria_usage:
+      aria_label: 10
+      aria_hidden: 10
+      aria_expanded: 6
+    semantic_html:
+      present: ["nav", "footer", "header", "section"]
+      missing: ["main", "article", "aside"]
+    contrast_ratios:
+      - pair: "teal text on white"
+        ratio: 3.3
+        wcag_aa: false
+        wcag_aaa: false
+        note: "FAILS AA — primary brand color on white needs attention"
+      - pair: "dark text (#353C32) on white"
+        ratio: 11.4
+        wcag_aa: true
+        wcag_aaa: true
+      - pair: "white text on teal"
+        ratio: 3.3
+        wcag_aa: false
+        wcag_aaa: false
+        note: "FAILS AA — buttons with white on teal need attention"
+      - pair: "black text on white"
+        ratio: 21.0
+        wcag_aa: true
+        wcag_aaa: true
+    social_links: 3
+    tabindex_count: 8
+
+# Detailed animation states
+animations:
+  card-hover:
+    type: "card"
+    description: "Card lifts up with enhanced shadow"
+    transition: "0.3s"
+    states:
+      default:
+        boxShadow: "rgba(0, 0, 0, 0.06) 0px 12px 28px 0px"
+        transform: "none"
+      hover:
+        boxShadow: "rgba(0, 0, 0, 0.2) 0px 25px 45px"
+        transform: "translateY(-15px)"
+  card-image-hover:
+    type: "card"
+    description: "Smaller lift with moderate shadow"
+    transition: "0.5s"
+    states:
+      default:
+        boxShadow: "none"
+        transform: "none"
+      hover:
+        boxShadow: "rgba(0, 0, 0, 0.14) 0px 18px 40px"
+        transform: "translateY(-8px)"
+  card-icon-hover:
+    type: "icon-in-card"
+    description: "Icon scales and rotates on card hover"
+    states:
+      default:
+        transform: "none"
+      hover:
+        transform: "scale(1.2) rotate(-10deg)"
+  tab-btn-hover:
+    type: "button"
+    description: "Tab fills with teal and scales"
+    states:
+      default:
+        background: "rgb(241, 241, 241)"
+        color: "rgb(0, 159, 158)"
+        transform: "none"
+      hover:
+        background: "rgb(0, 159, 158)"
+        color: "rgb(255, 255, 255)"
+        transform: "scale(1.05)"
+  social-link-hover:
+    type: "social"
+    description: "Social icons scale on hover"
+    states:
+      default:
+        transform: "none"
+      hover:
+        transform: "scale(1.1)"
+  partner-slider-hover:
+    type: "image"
+    description: "Partner logos scale on hover, slider pauses"
+    states:
+      default:
+        opacity: "0.7"
+        transform: "none"
+      hover:
+        opacity: "1"
+        transform: "scale(1.08)"
+
+css_custom_properties:
+  colors:
+    --wp--preset--color--accent-1: "#28B88F"
+    --wp--preset--color--accent-2: "#22D09F"
+    --wp--preset--color--accent-3: "#11644D"
+    --wp--preset--color--accent-4: "#012F22"
+    --wp--preset--color--accent-5: "#FFA900"
+    --wp--preset--color--accent-6: "#FF4D00"
+    --wp--preset--color--base: "#E0E6E0"
+    --wp--preset--color--base-alt: "#FFFFFF"
+    --wp--preset--color--contrast: "#353C32"
+    --wp--preset--color--contrast-alt: "#67837B"
+    --wp--preset--color--line: "#CCCFCD"
+    --wp--preset--color--line-alt: "#E3E8E5"
+    --wp--preset--color--dark-base: "#15635E"
+    --wp--preset--color--dark-contrast: "#DBE4E0"
+    --wp--preset--color--dark-contrast-alt: "#BCCBC4"
+    --wp--preset--color--black: "#000000"
+    --wp--preset--color--white: "#FFFFFF"
+  spacing:
+    --wp--style--block-gap: "0rem"
+    --wp--preset--spacing--20: "clamp(0.25rem, 0.65vw, 0.375rem)"
+    --wp--preset--spacing--30: "clamp(0.5rem, 1.3vw, 0.75rem)"
+    --wp--preset--spacing--40: "clamp(1rem, 2.6vw, 1.5rem)"
+    --wp--preset--spacing--50: "clamp(1.25rem, 3.2vw, 2rem)"
+    --wp--preset--spacing--60: "clamp(1.5rem, 3.9vw, 2.25rem)"
+    --wp--preset--spacing--70: "clamp(2rem, 5.2vw, 3rem)"
+    --wp--preset--spacing--80: "clamp(3rem, 7.8vw, 4.5rem)"
+  fonts:
+    --wp--preset--font-family--line-seed-sans-th: "\"LINE Seed Sans TH\""
+    --wp--preset--font-size--normal: "16px"
+    --wp--preset--font-size--huge: "42px"
+    --wp--preset--font-size--small: "clamp(0.875rem, 0.875rem + ((1vw - 0.2rem) * 0.115), 0.9375rem)"
+    --wp--preset--font-size--medium: "clamp(1rem, 1rem + ((1vw - 0.2rem) * 0.227), 1.125rem)"
+    --wp--preset--font-size--large: "clamp(1.25rem, 1.25rem + ((1vw - 0.2rem) * 0.455), 1.5rem)"
+    --wp--preset--font-size--x-large: "clamp(1.375rem, 1.375rem + ((1vw - 0.2rem) * 0.682), 1.75rem)"
+    --wp--preset--font-size--xx-large: "clamp(1.75rem, 1.75rem + ((1vw - 0.2rem) * 0.909), 2.25rem)"
+  other:
+    --wp--style--global--content-size: "750px"
+    --wp--style--global--wide-size: "1200px"
+    --gb-container-width: "1100px"
+    --radius: "8px"

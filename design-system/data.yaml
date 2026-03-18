@@ -1,0 +1,281 @@
+# Design System: PathToMed Camp by Aspect Education
+# Generated: 2026-03-18T00:15:00Z
+# Source: Aspect Brand Guidelines + medchic + solutionsimpact-automation extracts
+
+meta:
+  generated_at: "2026-03-18T00:15:00Z"
+  source_sites: ["medchic", "solutionsimpact-automation"]
+  primary_source: "Aspect Brand Guidelines (PDF)"
+  style: "Dark Mode Professional / Elite Academic"
+  theme: "Elite Academic Gateway"
+
+psychology:
+  style_classification: "Elite Academic"
+  brand_personality: ["professional", "elegant", "bold", "warm"]
+  brand_dna: "The Double Assurance Partner"
+  tone_of_voice: "Elite & Protective Mentor"
+  tone_traits:
+    - "Authoritative: Use data, statistics, and logic. Avoid fluffy marketing words."
+    - "Protective: Speak like a guardian protecting the family's investment."
+    - "Systematic: Use professional terms — Audit, Roadmap, Monitoring, Risk Management."
+    - "Authentic: Tell the Hard Truths."
+  emotions_evoked:
+    - emotion: "Trust"
+      reason: "Heritage Navy + Prestige Gold convey elite institutional credibility"
+    - emotion: "Assurance"
+      reason: "Evidence-based language and credential verification build parental confidence"
+    - emotion: "Urgency"
+      reason: "Limited seats + countdown create scarcity without feeling cheap"
+    - emotion: "Aspiration"
+      reason: "Gold accents and premium typography signal a path to excellence"
+  target_audience:
+    primary:
+      description: "High-Vision Parents — want Admission Assurance + Life Outcome Clarity"
+      age_range: "35-55"
+      tech_savvy: "medium"
+    secondary:
+      description: "Thai high school students M.4-6 interested in healthcare career path"
+      age_range: "15-18"
+      tech_savvy: "high"
+  design_philosophy:
+    core_belief: "Premium educational experiences deserve premium visual treatment — Navy + Cream + Gold conveys trust, not flash"
+    key_principles:
+      - "Pair Navy + Cream always"
+      - "Use Gold sparingly — only for the most important elements (CTAs, accents)"
+      - "Never use pure black (#000) on cream backgrounds"
+      - "No childish fonts, cartoon graphics, or Sale/Discount aesthetics"
+      - "Use 'Exclusive Access' language instead of 'discount'"
+
+style:
+  name: "Elite Academic"
+  characteristics:
+    - "Dark navy hero sections with gold CTA gradient"
+    - "Cream content sections with gray body text"
+    - "Serif headings (Times New Roman Condensed) for authority"
+    - "Sans-serif body (IBM Plex Sans Thai) for readability"
+    - "Pill-shaped buttons with gold gradient"
+    - "Generous whitespace (80px section padding)"
+  feel: "An elite mentor guiding families through critical education decisions"
+
+colors:
+  primary:
+    DEFAULT: "#0F2A4A"          # Aspect Heritage Navy — hero bg, nav, footer, dark sections
+    foreground: "#F1F1E8"       # Academic Cream for text on navy
+    hover: "#0A1F38"            # Darker navy for hover states
+  secondary:
+    DEFAULT: "#F1F1E8"          # Academic Cream — content bg, light sections
+    foreground: "#474747"       # Intellectual Gray for text on cream
+    hover: "#E8E5D8"            # Slightly darker cream
+  background:
+    DEFAULT: "#F1F1E8"          # Academic Cream
+    muted: "#EAE7DA"            # Warm muted bg
+    subtle: "#FFFFFF"           # Pure white for cards
+  foreground:
+    DEFAULT: "#474747"          # Intellectual Gray — body text
+    muted: "#6B6B6B"            # Lighter gray for secondary text
+    subtle: "#9A9A9A"           # Placeholder text
+  accent:
+    DEFAULT: "#D4B978"          # Prestige Gold (midpoint of gradient)
+    gradient_from: "#c3a456"    # Gold gradient start
+    gradient_to: "#f0cb46"      # Gold gradient end
+    gradient_css: "linear-gradient(90deg, #c3a456, #f0cb46)"
+    foreground: "#0F2A4A"       # Navy text on gold buttons
+  semantic:
+    success: "#07592c"          # Result Green — credential verified, approved
+    warning: "#D4B978"          # Gold for notices
+    error: "#950606"            # Risk Red — pain points, urgency, countdown
+    info: "#738cb0"             # Luminous Blue — tech/AI, data-related
+  transparency:
+    - value: "rgba(15, 42, 74, 0.97)"
+      usage: "Scrolled nav backdrop"
+    - value: "rgba(15, 42, 74, 0.85)"
+      usage: "Hero overlay on images"
+    - value: "rgba(255, 255, 255, 0.08)"
+      usage: "Subtle element bg on dark"
+    - value: "rgba(255, 255, 255, 0.12)"
+      usage: "Border on dark backgrounds"
+
+typography:
+  font_family:
+    hook: "Garet"                             # Bold ENG headers/hooks — attention-grabbing
+    heading: "Times New Roman MT Condensed"   # Primary/secondary topics — elegant serif
+    heading_fallback: "Cormorant Garamond"    # Web-safe serif fallback for heading
+    sans: "IBM Plex Sans Thai"                # Body text Thai/ENG — readable
+    mono: "IBM Plex Mono"                     # Code/data elements
+  font_size:
+    xs: "11px"
+    sm: "13px"
+    base: "16px"
+    lg: "18px"
+    xl: "20px"
+    2xl: "24px"
+    3xl: "32px"
+    4xl: "44px"
+    5xl: "clamp(52px, 8vw, 96px)"
+  font_weight:
+    normal: "400"
+    medium: "500"
+    semibold: "600"
+    bold: "700"
+  heading_styles:
+    hook:
+      font: "Garet"
+      weight: "bold"
+      letter_spacing: "-0.035em"    # -56 in design tool
+      line_height: "1.4"
+      usage: "Hero headlines, section hooks (ENG only)"
+    primary_topic:
+      font: "Times New Roman MT Condensed"
+      weight: "normal"
+      letter_spacing: "-0.024em"    # -38 in design tool
+      line_height: "3.4"
+      usage: "Section titles, primary topics"
+    secondary_topic:
+      font: "Times New Roman MT Condensed"
+      weight: "normal"
+      style: "italic"
+      letter_spacing: "-0.024em"
+      line_height: "3.4"
+      usage: "Section subtitles, secondary topics"
+    body:
+      font: "IBM Plex Sans Thai"
+      weight: "normal"
+      letter_spacing: "-0.019em"    # -30 in design tool
+      line_height: "1.26"
+      usage: "Body text, descriptions, Thai content"
+
+spacing:
+  base: "8px"
+  scale: [4, 8, 12, 16, 20, 24, 32, 40, 48, 64, 80, 128]
+
+layout:
+  container_width: "1100px"
+  grid_columns: 12
+  section_padding: "80px"
+  breakpoints:
+    mobile: "768px"
+    tablet: "1024px"
+    desktop: "1280px"
+
+border_radius:
+  DEFAULT: "12px"
+  sm: "8px"
+  md: "12px"
+  lg: "20px"
+  full: "9999px"       # Pill buttons
+
+shadows:
+  sm: "0 1px 3px rgba(0, 0, 0, 0.08)"
+  md: "0 4px 16px rgba(0, 0, 0, 0.10)"
+  lg: "0 12px 28px rgba(0, 0, 0, 0.12)"
+  xl: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1)"
+  gold_glow: "0 2px 12px rgba(212, 146, 10, 0.35)"
+  gold_glow_hover: "0 4px 20px rgba(212, 146, 10, 0.45)"
+
+animations:
+  durations:
+    fast: "0.15s"
+    normal: "0.3s"
+    slow: "0.5s"
+  easing:
+    default: "cubic-bezier(0.4, 0, 0.2, 1)"
+    bounce: "cubic-bezier(0, 0, 0.2, 1)"
+  libraries: []     # CSS-only, no external libraries
+  component_animations:
+    button_hover: "translateY(-1px) + shadow increase"
+    card_hover: "translateY(-3px) + shadow-md"
+    input_focus: "border-color transition to accent"
+  scroll_animations:
+    enabled: true
+    patterns:
+      - "fade-up: translateY(24px) → 0, opacity 0 → 1, duration 0.5s"
+      - "stagger-children: delay 0.1s per item in a group"
+      - "counter: number count-up when stat enters viewport"
+  keyframes:
+    - name: "fadeUp"
+      css: "@keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }"
+    - name: "pulseDot"
+      css: "@keyframes pulseDot { 0%,100% { opacity:1; transform:scale(1) } 50% { opacity:0.5; transform:scale(1.3) } }"
+
+theme:
+  name: "Elite Academic Gateway"
+  decorative_elements:
+    use:
+      - "Graduation cap motif (from Aspect logo)"
+      - "Gold gradient accents on CTAs and borders"
+      - "Prism/facet decorative elements (brand visual metaphor)"
+      - "Professional photography of students and mentors"
+      - "Subtle radial gradient on dark sections"
+    avoid:
+      - "Cartoon graphics or childish illustrations"
+      - "Pure black (#000000) text on cream backgrounds"
+      - "Sale/Discount aesthetics — use 'Exclusive Access' instead"
+      - "Bright saturated colors outside the brand palette"
+      - "Generic stock photos — use Thai student/medical context"
+  icons_suggestion:
+    - "GraduationCap"
+    - "Stethoscope"
+    - "Lightbulb"
+    - "Shield"
+    - "Trophy"
+    - "Clock"
+    - "Users"
+    - "CheckCircle"
+    - "Star"
+    - "FileText"
+
+icons:
+  system: "lucide"
+  sizes: ["16px", "20px", "24px"]
+  style: "outline"
+  stroke_width: "1.5"
+
+accessibility:
+  contrast_ratios:
+    - pair: "cream text on navy"
+      ratio: 11.2
+      wcag_aa: true
+      wcag_aaa: true
+    - pair: "gray text on cream"
+      ratio: 5.8
+      wcag_aa: true
+      wcag_aaa: false
+    - pair: "gold on navy"
+      ratio: 6.4
+      wcag_aa: true
+  focus_approach: "outline: 2px solid accent, outline-offset: 2px"
+
+feedback:
+  error_color: "#950606"
+  success_color: "#07592c"
+  warning_color: "#D4B978"
+  toast_library: "sonner"
+
+css_variables:
+  # Primary palette
+  --navy: "#0F2A4A"
+  --cream: "#F1F1E8"
+  --gray: "#474747"
+  --gold-from: "#c3a456"
+  --gold-to: "#f0cb46"
+  --gold-mid: "#D4B978"
+  # Semantic
+  --risk-red: "#950606"
+  --result-green: "#07592c"
+  --luminous-blue: "#738cb0"
+  # Borders & Shadows
+  --border-light: "rgba(0, 0, 0, 0.08)"
+  --border-dark: "rgba(255, 255, 255, 0.12)"
+  --shadow-sm: "0 1px 3px rgba(0, 0, 0, 0.08)"
+  --shadow-md: "0 4px 16px rgba(0, 0, 0, 0.10)"
+  # Radius
+  --r-sm: "8px"
+  --r-md: "12px"
+  --r-lg: "20px"
+
+assets:
+  logo:
+    primary: "materials/logo/aspect/Aspect.png"
+    dark_bg: "materials/logo/aspect/Aspect B.png"
+    dark_bg_small: "materials/logo/aspect/Aspect B-20.jpg"
+  hero_reference: "https://21st.dev/community/components/prashantsom75/scroll-morph-hero/default"

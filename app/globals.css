@@ -1,0 +1,111 @@
+@import "tailwindcss";
+
+@theme {
+  /* Colors */
+  --color-navy: #0F2A4A;
+  --color-navy-hover: #0A1F38;
+  --color-navy-deep: #050D1A;
+  --color-cream: #F1F1E8;
+  --color-cream-hover: #E8E5D8;
+  --color-cream-muted: #EAE7DA;
+  --color-gray-text: #474747;
+  --color-gray-muted: #6B6B6B;
+  --color-gray-subtle: #9A9A9A;
+  --color-gold: #D4B978;
+  --color-gold-from: #c3a456;
+  --color-gold-to: #f0cb46;
+  --color-risk-red: #950606;
+  --color-result-green: #07592c;
+  --color-luminous-blue: #738cb0;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.10);
+  --shadow-lg: 0 12px 28px rgba(0, 0, 0, 0.12);
+  --shadow-gold: 0 2px 12px rgba(212, 146, 10, 0.35);
+  --shadow-gold-hover: 0 4px 20px rgba(212, 146, 10, 0.45);
+
+  /* Border radius */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-full: 9999px;
+
+  /* Fonts */
+  --font-hook: "Garet", "Arial Black", sans-serif;
+  --font-heading: "Times New Roman MT Condensed", "Cormorant Garamond", "Georgia", serif;
+  --font-sans: "IBM Plex Sans Thai", "Sarabun", sans-serif;
+  --font-mono: "IBM Plex Mono", monospace;
+
+  /* Container */
+  --container-max: 1100px;
+
+  /* Animations */
+  --animate-fade-up: fadeUp 0.5s ease forwards;
+  --animate-pulse-dot: pulseDot 2s infinite;
+  --animate-marquee: marquee 30s linear infinite;
+  --animate-marquee-reverse: marquee 30s linear infinite reverse;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulseDot {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(1.3);
+  }
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* Base styles */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: var(--color-cream);
+  color: var(--color-gray-text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Mobile body padding for sticky CTA */
+@media (max-width: 767px) {
+  body {
+    padding-bottom: 72px;
+  }
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-cream);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-navy);
+  border-radius: 4px;
+}
