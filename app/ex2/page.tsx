@@ -28,12 +28,12 @@ export default function Ex2Page() {
           <BentoGrid />
         </div>
       </section>
-      <section className="bg-cream-muted py-16 px-[5%]">
+      <section className="bg-navy-deep py-16 px-[5%]">
         <div className="mx-auto max-w-[1100px]">
-          <div className="text-[11px] text-gray-muted uppercase tracking-[0.15em] mb-2 font-[var(--font-hook)]">
+          <div className="text-[11px] text-white/40 uppercase tracking-[0.15em] mb-2 font-[var(--font-hook)]">
             ค่ายนี้เหมาะกับใคร
           </div>
-          <h2 className="font-[var(--font-heading)] text-[clamp(28px,4vw,44px)] font-semibold text-gray-text mb-10">
+          <h2 className="font-[var(--font-heading)] text-[clamp(32px,4.5vw,52px)] font-semibold text-cream mb-10">
             เราออกแบบมาเพื่อ 2 กลุ่มนี้
           </h2>
           <PersonaFlipCard />
@@ -44,73 +44,73 @@ export default function Ex2Page() {
           <div className="text-[11px] text-white/40 uppercase tracking-[0.15em] mb-2 font-[var(--font-hook)]">
             Credentials
           </div>
-          <h2 className="font-[var(--font-heading)] text-[clamp(28px,4vw,44px)] font-semibold text-white mb-10">
+          <h2 className="font-[var(--font-heading)] text-[clamp(32px,4.5vw,52px)] font-semibold text-cream mb-10">
             หลักฐานที่ verify ได้จริง
           </h2>
           <GlassCredentialCards />
         </div>
       </section>
-      <section className="bg-cream-muted py-16 px-[5%]" id="schedule">
+      <section className="bg-navy-deep py-16 px-[5%]" id="schedule">
         <div className="mx-auto max-w-[1100px]">
-          <div className="text-[11px] text-gray-muted uppercase tracking-[0.15em] mb-2 font-[var(--font-hook)]">
+          <div className="text-[11px] text-white/40 uppercase tracking-[0.15em] mb-2 font-[var(--font-hook)]">
             ตารางค่าย
           </div>
-          <h2 className="font-[var(--font-heading)] text-[clamp(28px,4vw,44px)] font-semibold text-gray-text mb-10">
+          <h2 className="font-[var(--font-heading)] text-[clamp(32px,4.5vw,52px)] font-semibold text-cream mb-10">
             Workshop Program — 3 วันเต็ม
           </h2>
           <ParallelSchedule />
         </div>
       </section>
-      <section className="bg-white py-16 px-[5%]" id="speakers">
+      <section className="bg-navy py-16 px-[5%]" id="speakers">
         <div className="mx-auto max-w-[1100px]">
-          <div className="text-[11px] text-gray-muted uppercase tracking-[0.15em] mb-2 font-[var(--font-hook)]">
+          <div className="text-[11px] text-white/40 uppercase tracking-[0.15em] mb-2 font-[var(--font-hook)]">
             วิทยากร
           </div>
-          <h2 className="font-[var(--font-heading)] text-[clamp(28px,4vw,44px)] font-semibold text-gray-text mb-10">
+          <h2 className="font-[var(--font-heading)] text-[clamp(32px,4.5vw,52px)] font-semibold text-cream mb-10">
             Medical Faculty &amp; Judges
           </h2>
           <SpeakerRow />
         </div>
       </section>
-      <section className="bg-cream-muted py-16 px-[5%]" id="scholarship">
+      <section className="bg-navy-deep py-16 px-[5%]" id="scholarship">
         <div className="mx-auto max-w-[1100px]">
-          <div className="text-[11px] text-gray-muted uppercase tracking-[0.15em] mb-2 font-[var(--font-hook)]">
+          <div className="text-[11px] text-white/40 uppercase tracking-[0.15em] mb-2 font-[var(--font-hook)]">
             ค่าใช้จ่าย
           </div>
-          <h2 className="font-[var(--font-heading)] text-[clamp(28px,4vw,44px)] font-semibold text-gray-text mb-10">
+          <h2 className="font-[var(--font-heading)] text-[clamp(32px,4.5vw,52px)] font-semibold text-cream mb-10">
             ทุนและราคาค่าเข้าร่วม
           </h2>
           <BentoPricing />
         </div>
       </section>
-      <section className="bg-white py-16 px-[5%]">
+      <section className="bg-navy py-16 px-[5%]">
         <div className="mx-auto max-w-[1100px]">
-          <div className="text-[11px] text-gray-muted uppercase tracking-[0.15em] mb-2 font-[var(--font-hook)]">
+          <div className="text-[11px] text-white/40 uppercase tracking-[0.15em] mb-2 font-[var(--font-hook)]">
             กำหนดการ
           </div>
-          <h2 className="font-[var(--font-heading)] text-[clamp(28px,4vw,44px)] font-semibold text-gray-text mb-10">
+          <h2 className="font-[var(--font-heading)] text-[clamp(32px,4.5vw,52px)] font-semibold text-cream mb-10">
             Timeline สำคัญ
           </h2>
           <HorizontalTimeline />
         </div>
       </section>
-      <section className="bg-cream-muted py-16 px-[5%]">
+      <section className="bg-navy-deep py-16 px-[5%]">
         <div className="mx-auto max-w-[1100px]">
-          <div className="text-[11px] text-gray-muted uppercase tracking-[0.15em] mb-2 font-[var(--font-hook)]">
+          <div className="text-[11px] text-white/40 uppercase tracking-[0.15em] mb-2 font-[var(--font-hook)]">
             เสียงจากน้องๆ
           </div>
-          <h2 className="font-[var(--font-heading)] text-[clamp(28px,4vw,44px)] font-semibold text-gray-text mb-10">
+          <h2 className="font-[var(--font-heading)] text-[clamp(32px,4.5vw,52px)] font-semibold text-cream mb-10">
             เพราะนี่คือสิ่งที่น้องบอกว่าต้องการ
           </h2>
           <NotificationStack />
         </div>
       </section>
-      <section className="bg-white py-16 px-[5%]" id="faq">
+      <section className="bg-navy py-16 px-[5%]" id="faq">
         <div className="mx-auto max-w-[700px]">
-          <div className="text-[11px] text-gray-muted uppercase tracking-[0.15em] mb-2 font-[var(--font-hook)]">
+          <div className="text-[11px] text-white/40 uppercase tracking-[0.15em] mb-2 font-[var(--font-hook)]">
             FAQ
           </div>
-          <h2 className="font-[var(--font-heading)] text-[clamp(28px,4vw,44px)] font-semibold text-gray-text mb-10">
+          <h2 className="font-[var(--font-heading)] text-[clamp(32px,4.5vw,52px)] font-semibold text-cream mb-10">
             คำถามที่พบบ่อย
           </h2>
           <SearchableFaq />

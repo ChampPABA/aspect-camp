@@ -29,15 +29,17 @@ export default function GlassCredentialCards() {
         return (
           <motion.div
             key={i}
-            className="rounded-[20px] p-6 flex flex-col gap-4 cursor-default transition-all duration-200"
+            className="rounded-[20px] p-7 flex flex-col gap-4 cursor-default transition-all duration-200"
             style={{
-              background: "rgba(255,255,255,0.05)",
-              backdropFilter: "blur(8px)",
-              border: "1px solid rgba(255,255,255,0.10)",
+              background: "rgba(255,255,255,0.08)",
+              backdropFilter: "blur(12px)",
+              border: "1px solid rgba(255,255,255,0.15)",
             }}
             whileHover={{
               scale: 1.02,
-              boxShadow: "0 12px 28px rgba(255,255,255,0.05)",
+              backgroundColor: "rgba(255,255,255,0.12)",
+              borderColor: "rgba(255,255,255,0.25)",
+              boxShadow: "0 12px 28px rgba(0,0,0,0.25)",
             }}
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -54,7 +56,7 @@ export default function GlassCredentialCards() {
 
             {/* Content */}
             <div className="flex-1">
-              <h3 className="font-[var(--font-heading)] text-[20px] font-semibold text-cream mb-1">
+              <h3 className="font-[var(--font-heading)] text-[16px] font-semibold text-cream mt-1 mb-1">
                 {cred.name}
               </h3>
               <p className="text-[13px] text-white/50">{cred.org}</p>

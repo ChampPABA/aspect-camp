@@ -25,12 +25,12 @@ export default function SearchableFaq() {
             setQuery(e.target.value);
             setOpenIndex(null);
           }}
-          className="w-full bg-white border border-black/8 rounded-full px-5 py-3 text-[14px] text-gray-text placeholder:text-gray-muted outline-none focus:border-navy/30 focus:ring-2 focus:ring-navy/8 transition-all duration-200"
+          className="w-full bg-white/8 border border-white/15 rounded-full px-5 py-3 text-[14px] text-cream placeholder:text-white/30 outline-none focus:border-gold/50 transition-all duration-200"
         />
         {query && (
           <button
             onClick={() => setQuery("")}
-            className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-muted hover:text-gray-text transition-colors"
+            className="absolute right-4 top-1/2 -translate-y-1/2 text-white/30 hover:text-cream transition-colors"
           >
             ✕
           </button>
@@ -45,7 +45,7 @@ export default function SearchableFaq() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="text-center py-10 text-gray-muted text-[14px] italic"
+            className="text-center py-10 text-white/30 text-[14px] italic"
           >
             ไม่พบคำถามที่ตรงกัน
           </motion.div>
@@ -61,18 +61,18 @@ export default function SearchableFaq() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -8 }}
                   transition={{ duration: 0.2 }}
-                  className="border border-black/8 rounded-[12px] overflow-hidden bg-white"
+                  className="border border-white/8 rounded-[12px] overflow-hidden bg-navy-hover"
                 >
                   {/* Question */}
                   <button
-                    className="w-full text-left px-5 py-4 flex items-center justify-between gap-3 hover:bg-black/2 transition-colors duration-150"
+                    className="w-full text-left px-5 py-4 flex items-center justify-between gap-3 hover:bg-white/5 transition-colors duration-150"
                     onClick={() => setOpenIndex(isOpen ? null : i)}
                   >
-                    <span className="text-[14px] font-semibold text-gray-text">
+                    <span className="text-[14px] font-semibold text-cream">
                       {item.q}
                     </span>
                     <span
-                      className={`flex-shrink-0 w-5 h-5 flex items-center justify-center rounded-full border border-black/10 text-[11px] text-gray-muted transition-transform duration-200 ${
+                      className={`flex-shrink-0 w-5 h-5 flex items-center justify-center rounded-full border border-white/15 text-[11px] text-white/40 transition-transform duration-200 ${
                         isOpen ? "rotate-180" : ""
                       }`}
                     >
@@ -91,7 +91,7 @@ export default function SearchableFaq() {
                         transition={{ duration: 0.25, ease: "easeInOut" }}
                         className="overflow-hidden"
                       >
-                        <div className="px-5 pb-4 text-[14px] text-gray-muted leading-relaxed border-t border-black/5 pt-3">
+                        <div className="px-5 pb-4 text-[14px] text-cream/65 leading-relaxed border-t border-white/8 pt-3">
                           {item.a}
                         </div>
                       </motion.div>
