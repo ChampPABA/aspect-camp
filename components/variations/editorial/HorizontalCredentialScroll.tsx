@@ -37,23 +37,14 @@ export default function HorizontalCredentialScroll() {
           </h2>
         </div>
 
-        {/* Scrollable card row */}
-        <div
-          className="flex gap-5 overflow-x-auto pb-4"
-          style={{ scrollSnapType: "x mandatory", scrollbarWidth: "none" }}
-        >
+        {/* 2×2 grid on desktop, 1-col on mobile */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {CREDENTIALS.map((cred, i) => {
             const tagColors = tagColorMap[cred.tagColor] ?? tagColorMap["teal"];
             return (
               <div
                 key={i}
-                className="flex-shrink-0 bg-white/5 border border-white/10 rounded-[20px] p-7 flex flex-col justify-between"
-                style={{
-                  minWidth: "280px",
-                  width: "clamp(280px, 30vw, 320px)",
-                  height: "180px",
-                  scrollSnapAlign: "start",
-                }}
+                className="bg-white/5 border border-white/10 rounded-[20px] p-6 flex flex-col justify-between min-h-[180px]"
               >
                 {/* Top row: logo + tag */}
                 <div className="flex items-start justify-between mb-4">
@@ -88,10 +79,6 @@ export default function HorizontalCredentialScroll() {
           })}
         </div>
 
-        {/* Scroll hint */}
-        <div className="mt-4 text-center text-[13px] text-white/30 select-none">
-          ← เลื่อนดูทั้งหมด →
-        </div>
       </div>
     </section>
   );
