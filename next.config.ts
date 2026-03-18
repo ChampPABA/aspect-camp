@@ -5,6 +5,7 @@ const nextConfig: NextConfig = {
     formats: ["image/avif", "image/webp"],
   },
   allowedDevOrigins: ["172.19.81.144"],
+  // Vercel CI/CD connected
 };
 
 export default nextConfig;
