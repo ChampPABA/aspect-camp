@@ -496,7 +496,7 @@ export default function ScrollMorphHero() {
   return (
     <section
       ref={heroRef}
-      className="relative min-h-screen bg-navy overflow-hidden"
+      className="relative min-h-dvh bg-navy overflow-hidden"
     >
       {/* Background camp photos — subtle crossfade */}
       {HERO_PHOTOS.map((src, i) => (
@@ -558,7 +558,7 @@ export default function ScrollMorphHero() {
 
       {/* Hero content */}
       <motion.div
-        className="relative z-20 min-h-screen flex flex-col justify-center px-[5%] pointer-events-none"
+        className="relative z-20 min-h-dvh flex flex-col justify-center px-[5%] pointer-events-none"
         style={{ opacity: textOpacity }}
       >
         <div className="max-w-[860px] pt-24 pb-20">
