@@ -12,7 +12,7 @@ export default function CinematicSpeakers() {
           className="text-gold text-[12px] tracking-[0.25em] uppercase text-center mb-4 font-[var(--font-hook)]"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, amount: 0 }}
           transition={{ duration: 0.6 }}
         >
           ผู้เชี่ยวชาญ
@@ -22,7 +22,7 @@ export default function CinematicSpeakers() {
           className="font-[var(--font-heading)] text-4xl md:text-6xl text-cream text-center mb-14 leading-tight"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, amount: 0 }}
           transition={{ duration: 0.7, ease: "easeOut" }}
         >
           วิทยากรและกรรมการ
@@ -35,12 +35,12 @@ export default function CinematicSpeakers() {
               key={`${speaker.name}-${i}`}
               className={`border rounded-2xl p-8 relative overflow-hidden ${
                 speaker.isPlaceholder
-                  ? "border-white/10 bg-white/3"
+                  ? "border-white/10 bg-white/5"
                   : "border-white/15 bg-white/5"
               }`}
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-40px" }}
+              viewport={{ once: true, amount: 0 }}
               transition={{
                 duration: 0.6,
                 ease: "easeOut",
@@ -53,7 +53,7 @@ export default function CinematicSpeakers() {
                 style={{ fontSize: "clamp(60px, 10vw, 120px)" }}
                 initial={{ scale: 2.5, opacity: 0 }}
                 whileInView={{ scale: 1, opacity: 1 }}
-                viewport={{ once: true }}
+                viewport={{ once: true, amount: 0 }}
                 transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1], delay: i * 0.15 + 0.1 }}
               >
                 {speaker.initials}
@@ -63,7 +63,7 @@ export default function CinematicSpeakers() {
               <div
                 className={`w-14 h-14 rounded-full flex items-center justify-center mb-5 font-[var(--font-hook)] font-bold text-[14px] ${
                   speaker.isPlaceholder
-                    ? "bg-white/10 text-white/30"
+                    ? "bg-white/10 text-white/50"
                     : "bg-gradient-to-br from-gold-from to-gold-to text-navy"
                 }`}
               >
@@ -72,7 +72,7 @@ export default function CinematicSpeakers() {
 
               <h3
                 className={`font-[var(--font-hook)] text-[17px] font-bold mb-1 ${
-                  speaker.isPlaceholder ? "text-cream/30" : "text-cream"
+                  speaker.isPlaceholder ? "text-cream/50" : "text-cream"
                 }`}
               >
                 {speaker.name}
@@ -80,7 +80,7 @@ export default function CinematicSpeakers() {
 
               <p
                 className={`text-[13px] leading-snug mb-2 whitespace-pre-line ${
-                  speaker.isPlaceholder ? "text-cream/25" : "text-cream/60"
+                  speaker.isPlaceholder ? "text-cream/40" : "text-cream/60"
                 }`}
               >
                 {speaker.role}
@@ -88,7 +88,7 @@ export default function CinematicSpeakers() {
 
               <p
                 className={`text-[12px] font-[var(--font-hook)] ${
-                  speaker.isPlaceholder ? "text-cream/20" : "text-gold/70"
+                  speaker.isPlaceholder ? "text-cream/35" : "text-gold/70"
                 }`}
               >
                 {speaker.institution}

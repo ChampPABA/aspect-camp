@@ -13,7 +13,7 @@ export default function SpreadPricing() {
           className="text-gold text-[12px] tracking-[0.25em] uppercase text-center mb-4 font-[var(--font-hook)]"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, amount: 0 }}
           transition={{ duration: 0.6 }}
         >
           ทุนและราคา
@@ -23,7 +23,7 @@ export default function SpreadPricing() {
           className="font-[var(--font-heading)] text-4xl md:text-6xl text-cream text-center mb-4 leading-tight"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, amount: 0 }}
           transition={{ duration: 0.7, ease: "easeOut" }}
         >
           เลือกแผนที่ใช่สำหรับคุณ
@@ -33,7 +33,7 @@ export default function SpreadPricing() {
           className="text-cream/50 text-center text-[15px] mb-12"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, amount: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
           มีทุนสนับสนุนรวม 13 ทุน
@@ -51,7 +51,7 @@ export default function SpreadPricing() {
               }`}
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-40px" }}
+              viewport={{ once: true, amount: 0 }}
               transition={{
                 duration: 0.55,
                 ease: [0.22, 1, 0.36, 1],

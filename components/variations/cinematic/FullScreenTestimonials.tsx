@@ -27,7 +27,7 @@ export default function FullScreenTestimonials() {
               className="w-14 h-14 rounded-full bg-gradient-to-br from-gold-from to-gold-to flex items-center justify-center mx-auto mb-8"
               initial={{ scale: 0, opacity: 0 }}
               whileInView={{ scale: 1, opacity: 1 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, amount: 0 }}
               transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
             >
               <span className="font-[var(--font-hook)] font-black text-navy text-[13px]">
@@ -40,7 +40,7 @@ export default function FullScreenTestimonials() {
               className="font-[var(--font-heading)] text-3xl md:text-5xl text-cream/90 italic leading-snug mb-8"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, amount: 0 }}
               transition={{ duration: 0.8, ease: "easeOut", delay: 0.1 }}
             >
               {testimonial.text}
@@ -50,7 +50,7 @@ export default function FullScreenTestimonials() {
             <motion.div
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, amount: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
             >
               <p className="text-cream font-[var(--font-hook)] font-semibold text-[15px]">

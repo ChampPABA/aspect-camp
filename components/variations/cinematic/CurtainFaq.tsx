@@ -20,7 +20,7 @@ export default function CurtainFaq() {
           className="text-gold text-[12px] tracking-[0.25em] uppercase text-center mb-4 font-[var(--font-hook)]"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, amount: 0 }}
           transition={{ duration: 0.6 }}
         >
           คำถามที่พบบ่อย
@@ -30,7 +30,7 @@ export default function CurtainFaq() {
           className="font-[var(--font-heading)] text-4xl md:text-5xl text-cream text-center mb-12 leading-tight"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, amount: 0 }}
           transition={{ duration: 0.7, ease: "easeOut" }}
         >
           ตอบทุกข้อสงสัย
@@ -44,7 +44,7 @@ export default function CurtainFaq() {
               className="border border-white/10 rounded-xl overflow-hidden"
               initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-20px" }}
+              viewport={{ once: true, amount: 0 }}
               transition={{ duration: 0.4, ease: "easeOut", delay: i * 0.06 }}
             >
               {/* Question row */}

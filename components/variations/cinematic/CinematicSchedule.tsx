@@ -29,7 +29,7 @@ export default function CinematicSchedule() {
           className="text-navy/50 text-[12px] tracking-[0.25em] uppercase text-center mb-4 font-[var(--font-hook)]"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, amount: 0 }}
           transition={{ duration: 0.6 }}
         >
           ตารางกิจกรรม
@@ -39,7 +39,7 @@ export default function CinematicSchedule() {
           className="font-[var(--font-heading)] text-4xl md:text-5xl text-navy text-center mb-10 leading-tight"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, amount: 0 }}
           transition={{ duration: 0.7, ease: "easeOut" }}
         >
           3 วันที่เปลี่ยนชีวิต

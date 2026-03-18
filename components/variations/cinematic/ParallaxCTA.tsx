@@ -48,7 +48,7 @@ export default function ParallaxCTA() {
           className="inline-flex items-center gap-2 border border-gold/40 rounded-full px-4 py-1.5 mb-8"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, amount: 0 }}
           transition={{ duration: 0.6 }}
         >
           <span className="w-2 h-2 rounded-full bg-gold animate-pulse" />
@@ -61,7 +61,7 @@ export default function ParallaxCTA() {
           className="font-[var(--font-heading)] text-5xl md:text-7xl text-cream leading-tight mb-6"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, amount: 0 }}
           transition={{ duration: 0.8, ease: "easeOut", delay: 0.1 }}
         >
           พร้อมเดินบน
@@ -77,7 +77,7 @@ export default function ParallaxCTA() {
           className="text-cream/60 text-[17px] leading-relaxed mb-10 max-w-xl mx-auto"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, amount: 0 }}
           transition={{ duration: 0.7, delay: 0.3 }}
         >
           3 วัน ค้นพบตัวเอง สร้าง credential สำหรับพอร์ต TCAS
@@ -89,7 +89,7 @@ export default function ParallaxCTA() {
           className="flex flex-wrap items-center justify-center gap-4"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, amount: 0 }}
           transition={{ duration: 0.6, delay: 0.45 }}
         >
           <Button href={LINE_URL} variant="gold" size="lg">
@@ -105,7 +105,7 @@ export default function ParallaxCTA() {
           className="text-cream/30 text-[13px] mt-8"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, amount: 0 }}
           transition={{ duration: 0.6, delay: 0.6 }}
         >
           จาก 60 ที่นั่ง · MicroCredential KMUTT + SET Certificate ·

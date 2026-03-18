@@ -30,7 +30,7 @@ export default function ScrollProgressTimeline() {
           className="text-navy/50 text-[12px] tracking-[0.25em] uppercase mb-4 font-[var(--font-hook)]"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, amount: 0 }}
           transition={{ duration: 0.6 }}
         >
           ไทม์ไลน์
@@ -40,7 +40,7 @@ export default function ScrollProgressTimeline() {
           className="font-[var(--font-heading)] text-4xl md:text-5xl text-navy mb-14 leading-tight"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, amount: 0 }}
           transition={{ duration: 0.7, ease: "easeOut" }}
         >
           กำหนดการสำคัญ
@@ -64,7 +64,7 @@ export default function ScrollProgressTimeline() {
                 className="flex items-start gap-6 relative"
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, margin: "-60px" }}
+                viewport={{ once: true, amount: 0 }}
                 transition={{ duration: 0.5, ease: "easeOut", delay: i * 0.1 }}
               >
                 {/* Dot */}

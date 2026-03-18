@@ -52,7 +52,7 @@ export default function PhilosophyManifesto() {
           className="text-gold text-[13px] tracking-[0.2em] uppercase mb-6 text-center"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, amount: 0 }}
           transition={{ duration: 0.6 }}
         >
           ปรัชญาของเรา
@@ -63,7 +63,7 @@ export default function PhilosophyManifesto() {
           className="font-[var(--font-heading)] text-5xl md:text-7xl text-cream text-center mb-10 leading-tight"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, amount: 0 }}
           transition={{ duration: 0.7, ease: "easeOut" }}
         >
           เราเชื่อว่า
@@ -74,7 +74,7 @@ export default function PhilosophyManifesto() {
           variants={container}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "-80px" }}
+          viewport={{ once: true, amount: 0 }}
           className="flex flex-wrap justify-center gap-x-3 gap-y-2 mb-16"
         >
           {words.map((word, i) => (
@@ -93,7 +93,7 @@ export default function PhilosophyManifesto() {
           variants={pillarContainer}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "-60px" }}
+          viewport={{ once: true, amount: 0 }}
           className="grid grid-cols-1 md:grid-cols-3 gap-6"
         >
           {PILLARS.map((pillar) => (

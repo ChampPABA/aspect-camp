@@ -18,7 +18,7 @@ export default function CardDealCredentials() {
           className="text-navy/50 text-[12px] tracking-[0.25em] uppercase text-center mb-4 font-[var(--font-hook)]"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, amount: 0 }}
           transition={{ duration: 0.6 }}
         >
           ได้รับจากค่ายนี้
@@ -28,7 +28,7 @@ export default function CardDealCredentials() {
           className="font-[var(--font-heading)] text-4xl md:text-6xl text-navy text-center mb-14 leading-tight"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, amount: 0 }}
           transition={{ duration: 0.7, ease: "easeOut" }}
         >
           3 Credentials ที่ Verify ได้จริง
@@ -42,7 +42,7 @@ export default function CardDealCredentials() {
               className="bg-white border border-black/8 rounded-[20px] p-8 shadow-md"
               initial={{ opacity: 0, y: 60, rotate: -5 }}
               whileInView={{ opacity: 1, y: 0, rotate: 0 }}
-              viewport={{ once: true, margin: "-40px" }}
+              viewport={{ once: true, amount: 0 }}
               transition={{
                 duration: 0.6,
                 ease: [0.22, 1, 0.36, 1],

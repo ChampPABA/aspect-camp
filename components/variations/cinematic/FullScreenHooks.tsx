@@ -29,11 +29,11 @@ export default function FullScreenHooks() {
           {/* Content */}
           <div className="relative z-10 max-w-3xl px-[5%] w-full">
             {/* Wipe reveal overlay */}
-            <div className="overflow-hidden">
+            <div className="relative overflow-hidden">
               <motion.div
                 initial={{ x: "-100%" }}
                 whileInView={{ x: "100%" }}
-                viewport={{ once: true, margin: "-100px" }}
+                viewport={{ once: true, amount: 0 }}
                 transition={{ duration: 0.7, ease: [0.76, 0, 0.24, 1] }}
                 className="absolute inset-0 bg-gold z-20 pointer-events-none"
                 style={{ willChange: "transform" }}
@@ -44,7 +44,7 @@ export default function FullScreenHooks() {
               className="text-gold text-[12px] tracking-[0.3em] uppercase mb-4 font-[var(--font-hook)]"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, amount: 0 }}
               transition={{ delay: 0.5, duration: 0.5 }}
             >
               {hook.num}
@@ -54,7 +54,7 @@ export default function FullScreenHooks() {
               className="font-[var(--font-heading)] text-5xl md:text-7xl text-cream leading-tight mb-6"
               initial={{ opacity: 0, x: -40 }}
               whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
+              viewport={{ once: true, amount: 0 }}
               transition={{ duration: 0.7, ease: "easeOut", delay: 0.15 }}
             >
               {hook.title}
@@ -64,7 +64,7 @@ export default function FullScreenHooks() {
               className="text-cream/70 text-[17px] md:text-xl leading-relaxed mb-6 max-w-lg"
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, amount: 0 }}
               transition={{ duration: 0.6, ease: "easeOut", delay: 0.3 }}
             >
               {hook.desc}
@@ -74,7 +74,7 @@ export default function FullScreenHooks() {
               className="text-gold/80 text-[14px] font-[var(--font-hook)]"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, amount: 0 }}
               transition={{ duration: 0.5, delay: 0.45 }}
             >
               {hook.usp}
