@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown, Wrench, Award, Compass, Lightbulb, Brain, Users } from "lucide-react";
 import Image from "next/image";
@@ -8,6 +8,17 @@ import { HOOKS, PILLARS } from "@/lib/constants";
 
 const hookIcons = [Wrench, Award, Compass] as const;
 const pillarIcons = [Lightbulb, Brain, Users] as const;
+
+const campImages = [
+  "/images/camp/P1010350.webp",
+  "/images/camp/P1010220.webp",
+  "/images/camp/P1010465.webp",
+  "/images/camp/P1010534.webp",
+  "/images/camp/P1010734.webp",
+  "/images/camp/P1010838.webp",
+  "/images/camp/_DSC0055.webp",
+  "/images/camp/_DSC0132.webp",
+];
 
 type AccordionEntry = {
   title: string;
@@ -30,13 +41,20 @@ const items: AccordionEntry[] = [
 
 export default function AboutAccordion() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
+  const [currentImage, setCurrentImage] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentImage((prev) => (prev + 1) % campImages.length);
+    }, 3500);
+    return () => clearInterval(timer);
+  }, []);
 
   return (
     <section id="about" className="bg-cream py-20 px-[5%]">
       <div className="max-w-[var(--container-max)] mx-auto">
-        {/* Heading */}
         <motion.p
-          className="text-gold text-[12px] tracking-[0.25em] uppercase mb-4 font-sans font-semibold"
+          className="text-gold text-xs tracking-[0.25em] uppercase mb-4 font-sans font-semibold"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true, amount: 0 }}
@@ -55,7 +73,7 @@ export default function AboutAccordion() {
         </motion.h2>
 
         <div className="grid md:grid-cols-2 gap-10 items-start">
-          {/* Hero image */}
+          {/* Image slideshow */}
           <motion.div
             className="relative aspect-[4/3] rounded-2xl overflow-hidden"
             initial={{ opacity: 0, scale: 0.95 }}
@@ -63,14 +81,38 @@ export default function AboutAccordion() {
             viewport={{ once: true, amount: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <Image
-              src="/images/camp/P1010350.webp"
-              alt="Camp workshop"
-              fill
-              className="object-cover"
-              sizes="(max-width: 768px) 100vw, 50vw"
-            />
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={currentImage}
+                initial={{ opacity: 0, scale: 1.05 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.8 }}
+                className="absolute inset-0"
+              >
+                <Image
+                  src={campImages[currentImage]}
+                  alt={`Camp activity ${currentImage + 1}`}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                />
+              </motion.div>
+            </AnimatePresence>
             <div className="absolute inset-0 bg-gradient-to-t from-navy/40 to-transparent" />
+            {/* Dots indicator */}
+            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-1.5 z-10">
+              {campImages.map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => setCurrentImage(i)}
+                  className={`w-2 h-2 rounded-full transition-colors duration-300 ${
+                    i === currentImage ? "bg-gold" : "bg-white/40"
+                  }`}
+                  aria-label={`View image ${i + 1}`}
+                />
+              ))}
+            </div>
           </motion.div>
 
           {/* Accordion */}
@@ -92,7 +134,7 @@ export default function AboutAccordion() {
                     className="w-full flex items-center gap-3 px-5 py-4 text-left cursor-pointer hover:bg-navy/3 transition-colors"
                   >
                     <Icon size={20} className="text-gold shrink-0" />
-                    <span className="flex-1 font-medium text-navy text-base">
+                    <span className="flex-1 font-semibold text-navy text-base">
                       {item.title}
                     </span>
                     <motion.div

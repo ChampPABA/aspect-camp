@@ -29,9 +29,8 @@ export default function SegmentedSchedule() {
   return (
     <section id="schedule" className="bg-cream-muted py-20 px-[5%]">
       <div className="max-w-3xl mx-auto">
-        {/* Heading */}
         <motion.p
-          className="text-navy/50 text-[12px] tracking-[0.25em] uppercase text-center mb-4 font-sans font-semibold"
+          className="text-gold text-xs tracking-[0.25em] uppercase text-center mb-4 font-sans font-semibold"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true, amount: 0 }}
@@ -49,13 +48,13 @@ export default function SegmentedSchedule() {
           3 วันที่เปลี่ยนชีวิต
         </motion.h2>
 
-        {/* Segmented control */}
-        <div className="flex gap-1 bg-navy/8 rounded-full p-1 mb-10 relative">
+        {/* Segmented control — font-sans for Thai labels */}
+        <div className="flex gap-1 bg-navy/8 rounded-full p-1.5 mb-10 relative">
           {SCHEDULE_TABS.map((tab, i) => (
             <button
               key={tab}
               onClick={() => handleTabChange(i)}
-              className={`relative flex-1 py-3 px-4 rounded-full text-sm font-hook font-medium transition-colors duration-200 z-10 cursor-pointer ${
+              className={`relative flex-1 py-3 px-4 rounded-full text-sm font-sans font-semibold transition-colors duration-200 z-10 cursor-pointer ${
                 activeTab === i ? "text-navy" : "text-navy/50 hover:text-navy/80"
               }`}
             >
@@ -83,69 +82,68 @@ export default function SegmentedSchedule() {
               exit={{ opacity: 0, x: direction * -40 }}
               transition={{ duration: 0.3, ease: "easeInOut" }}
             >
-              <div className="relative">
-                {/* Vertical line */}
-                <div className="absolute left-[19px] top-2 bottom-2 w-px bg-navy/10" />
-
-                <div className="space-y-1">
-                  {SCHEDULE[activeTab].map((item, i) => {
-                    const Icon = item.isBreak
-                      ? Coffee
-                      : item.badge
-                        ? badgeIcons[item.badge.type]
-                        : null;
-                    return (
-                      <div key={i} className="flex items-start gap-4 relative pl-10 py-3">
-                        {/* Timeline dot */}
-                        <div
-                          className={`absolute left-3 top-4.5 w-3 h-3 rounded-full border-2 ${
-                            item.isBreak
-                              ? "bg-cream-muted border-navy/20"
-                              : "bg-gold border-gold"
-                          }`}
-                        />
-
-                        {/* Time */}
-                        <span className="text-sm text-navy/40 font-mono w-[110px] shrink-0 pt-0.5">
+              <div className="space-y-0">
+                {SCHEDULE[activeTab].map((item, i) => {
+                  const Icon = item.isBreak
+                    ? Coffee
+                    : item.badge
+                      ? badgeIcons[item.badge.type]
+                      : null;
+                  return (
+                    <div
+                      key={i}
+                      className={`flex items-start gap-4 px-5 py-4 rounded-xl ${
+                        item.isBreak
+                          ? "bg-navy/3"
+                          : i % 2 === 0
+                            ? "bg-white/40"
+                            : ""
+                      }`}
+                    >
+                      {/* Time */}
+                      <div className="w-[120px] shrink-0 pt-0.5">
+                        <span className="text-sm font-sans font-medium text-navy/60">
                           {item.time}
                         </span>
+                      </div>
 
-                        {/* Content */}
-                        <div className="flex-1 min-w-0">
-                          <div className="flex items-center gap-2 flex-wrap">
-                            {Icon && (
-                              <Icon
-                                size={14}
-                                className={item.isBreak ? "text-navy/30" : "text-gold"}
-                              />
-                            )}
+                      {/* Content */}
+                      <div className="flex-1 min-w-0">
+                        <div className="flex items-center gap-2.5 flex-wrap">
+                          {Icon && (
+                            <Icon
+                              size={16}
+                              className={item.isBreak ? "text-navy/30" : "text-gold"}
+                            />
+                          )}
+                          <span
+                            className={`text-base font-sans ${
+                              item.isBreak
+                                ? "text-navy/40 font-normal italic"
+                                : "text-navy font-semibold"
+                            }`}
+                          >
+                            {item.event}
+                          </span>
+                          {item.badge && (
                             <span
-                              className={`text-base font-medium ${
-                                item.isBreak ? "text-navy/40 italic" : "text-navy"
+                              className={`px-2.5 py-1 rounded-full text-xs font-semibold ${
+                                badgeColors[item.badge.type]
                               }`}
                             >
-                              {item.event}
+                              {item.badge.label}
                             </span>
-                            {item.badge && (
-                              <span
-                                className={`px-2 py-0.5 rounded-full text-[10px] font-semibold ${
-                                  badgeColors[item.badge.type]
-                                }`}
-                              >
-                                {item.badge.label}
-                              </span>
-                            )}
-                          </div>
-                          {item.desc && (
-                            <p className="text-sm text-navy/50 mt-1">
-                              {item.desc}
-                            </p>
                           )}
                         </div>
+                        {item.desc && (
+                          <p className="text-sm text-navy/50 mt-1.5 leading-relaxed">
+                            {item.desc}
+                          </p>
+                        )}
                       </div>
-                    );
-                  })}
-                </div>
+                    </div>
+                  );
+                })}
               </div>
             </motion.div>
           </AnimatePresence>

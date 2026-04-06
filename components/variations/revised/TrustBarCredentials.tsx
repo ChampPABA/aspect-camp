@@ -39,9 +39,9 @@ export default function TrustBarCredentials() {
           viewport={{ once: true, amount: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <span className="text-cream/40 text-[13px] tracking-wide">ร่วมกับ</span>
+          <span className="text-cream/50 text-sm tracking-wide">ร่วมกับ</span>
           {partnerLogos.map((logo) => (
-            <div key={logo.name} className="relative h-10 w-20 sm:h-12 sm:w-24 grayscale hover:grayscale-0 opacity-60 hover:opacity-100 transition-all duration-300">
+            <div key={logo.name} className="relative h-12 w-24 sm:h-14 sm:w-28 opacity-70 hover:opacity-100 transition-opacity duration-300">
               <Image
                 src={logo.src}
                 alt={logo.name}

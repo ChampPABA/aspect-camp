@@ -100,7 +100,7 @@ export default function PremiumPricing() {
         )}
 
         {/* Pricing cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
           {PRICING_TIERS.map((tier, i) => {
             const isEarlyBird = tier.tierClass === "early";
             return (
@@ -130,30 +130,29 @@ export default function PremiumPricing() {
                 )}
 
                 {/* Tier name */}
-                <h3 className="font-hook text-base text-cream mb-2">{tier.tier}</h3>
+                <h3 className="font-sans font-bold text-lg text-cream mb-2">{tier.tier}</h3>
 
-                {/* Condition */}
-                <p className="text-sm text-cream/40 mb-4 leading-relaxed">
+                <p className="text-sm text-cream/50 mb-5 leading-relaxed">
                   {tier.condition}
                 </p>
 
                 {/* Price */}
-                <div className="mb-4">
-                  <span className={`font-heading text-3xl font-bold ${tier.priceColor || "text-cream"}`}>
+                <div className="mb-5">
+                  <span className={`font-sans text-4xl font-bold ${tier.priceColor || "text-cream"}`}>
                     {tier.price === "ฟรี" ? "ฟรี" : `฿${tier.price}`}
                   </span>
                   {tier.originalPrice && (
-                    <span className="text-[13px] text-cream/30 line-through ml-2">
+                    <span className="text-sm text-cream/30 line-through ml-2">
                       ฿{tier.originalPrice}
                     </span>
                   )}
                 </div>
 
                 {/* Benefits */}
-                <ul className="space-y-2 mb-6 flex-1">
+                <ul className="space-y-2.5 mb-6 flex-1">
                   {tier.benefits.map((b, j) => (
-                    <li key={j} className="flex items-center gap-2 text-sm text-cream/70">
-                      <Check size={14} className="text-gold shrink-0" />
+                    <li key={j} className="flex items-center gap-2.5 text-base text-cream/70">
+                      <Check size={16} className="text-gold shrink-0" />
                       {b}
                     </li>
                   ))}
