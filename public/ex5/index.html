@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aspect Med Camp 2026 — Path to Med</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=IBM+Plex+Sans+Thai:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<style>
+  :root {
+    --navy: #0F2A4A; --navy-hover: #0A1F38; --navy-deep: #050D1A;
+    --cream: #F1F1E8; --cream-muted: #EAE7DA;
+    --gold: #D4B978; --gold-from: #c3a456; --gold-to: #f0cb46;
+    --gray-text: #c8c4ba; --gray-muted: #7a8a9e;
+    --red: #e85d5d; --green: #07592c;
+    --bg: var(--navy-deep); --surface: #0a1628; --text: var(--cream);
+    --muted: #7a8a9e; --accent: var(--gold); --border: #162a45;
+    /* CI Fonts */
+    --font-heading: "Times New Roman MT Condensed", "Cormorant Garamond", "Georgia", serif;
+    --font-hook: "Garet", "Arial Black", sans-serif;
+    --font-sans: "IBM Plex Sans Thai", "Sarabun", sans-serif;
+    --font-mono: "IBM Plex Mono", monospace;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: var(--bg); color: var(--text); font-family: var(--font-sans); font-size: 17px; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+  h1, h2, h3 { font-family: var(--font-sans); font-weight: 700; }
+  h1 .en, h2 .en, .heading-en { font-family: var(--font-heading); font-weight: 600; }
+  .label { font-size: 12px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); }
+  .gold { color: var(--gold); }
+  .red { color: var(--red); }
+  a { color: inherit; }
+
+  /* ─── Nav (ex4 style) ─── */
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 200; height: 64px; padding: 0 5%; display: flex; justify-content: space-between; align-items: center; background: rgba(15,42,74,0.97); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,0.12); transition: height 0.3s; }
+  nav.scrolled { height: 56px; }
+  .nav-brand { display: flex; align-items: center; gap: 8px; text-decoration: none; }
+  .nav-logo { height: 28px; }
+  .nav-label { font-size: 13px; color: rgba(255,255,255,0.3); }
+  nav .links { display: flex; gap: 28px; align-items: center; }
+  nav .links a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 14px; position: relative; padding: 4px 0; transition: color 0.3s; }
+  nav .links a::after { content: ''; position: absolute; left: 0; right: 0; bottom: -2px; height: 2px; background: var(--gold); border-radius: 1px; transform: scaleX(0); transition: transform 0.3s cubic-bezier(0.4,0,0.2,1); transform-origin: center; }
+  nav .links a:hover { color: #fff; }
+  nav .links a:hover::after { transform: scaleX(1); }
+  /* Shine button style */
+  .shine-btn { display: inline-flex; align-items: center; gap: 6px; padding: 10px 24px; background: linear-gradient(135deg, var(--gold-from), var(--gold-to)); border-radius: 100px; color: var(--navy-deep) !important; font-weight: 600; font-size: 14px; text-decoration: none; position: relative; overflow: hidden; cursor: pointer; box-shadow: 0 2px 12px rgba(212,146,10,0.35); transition: transform 0.2s cubic-bezier(0.4,0,0.2,1), box-shadow 0.2s; }
+  .shine-btn:hover { transform: translateY(-2px); box-shadow: 0 4px 20px rgba(212,146,10,0.45); }
+  .shine-btn::after { content: ''; position: absolute; inset: 0; transform: translateX(-100%); background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent); transition: transform 0.7s ease-in-out; }
+  .shine-btn:hover::after { transform: translateX(100%); }
+  /* Hamburger */
+  .ham-btn { display: none; background: none; border: none; color: #fff; cursor: pointer; padding: 4px; }
+  .ham-btn svg { width: 24px; height: 24px; }
+  .mobile-menu { display: none; }
+  .desktop-only { display: inline-flex; }
+
+  /* ─── HERO — Pinned + Scroll Content ─── */
+  .hero { position: relative; height: 500vh; }
+  .hero-pin { position: sticky; top: 0; height: 100vh; overflow: hidden; }
+  #hero-canvas { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 0; }
+  .hero-dim { position: absolute; inset: 0; z-index: 1; background: rgba(5,13,26,0.5); }
+  .hero-slide { position: absolute; inset: 0; z-index: 2; display: flex; align-items: center; justify-content: center; text-align: center; padding: 40px 24px; opacity: 0; }
+  .slide-inner { max-width: 800px; }
+  .slide-inner h1 { font-size: clamp(36px, 7vw, 72px); font-weight: 700; line-height: 1.08; margin-bottom: 18px; }
+  .slide-inner h2 { font-size: clamp(28px, 4.5vw, 48px); font-weight: 600; line-height: 1.2; margin-bottom: 14px; }
+  .slide-inner p { font-size: 19px; color: rgba(241,241,232,0.8); line-height: 1.7; max-width: 50ch; margin: 0 auto; }
+  .stats-row { display: flex; gap: 56px; justify-content: center; margin-top: 32px; flex-wrap: wrap; }
+  .stat-box { text-align: center; }
+  .stat-box .num { font-family: var(--font-sans); font-size: 64px; font-weight: 700; color: var(--gold); line-height: 1; }
+  .stat-box .slabel { font-size: 14px; color: rgba(241,241,232,0.6); margin-top: 8px; letter-spacing: 0.1em; text-transform: uppercase; }
+  .bullet-list { list-style: none; text-align: left; max-width: 600px; margin: 0 auto; }
+  .bullet-list li { font-size: 19px; padding: 18px 0; border-bottom: 1px solid rgba(22,42,69,0.4); display: flex; gap: 16px; align-items: flex-start; color: rgba(241,241,232,0.9); line-height: 1.6; }
+  .bullet-list li::before { content: '—'; color: var(--gold); font-size: 20px; margin-top: 1px; flex-shrink: 0; font-weight: 700; }
+  .scroll-cue { position: absolute; bottom: 28px; left: 50%; transform: translateX(-50%); z-index: 3; }
+  .scroll-cue span { font-size: 10px; color: var(--muted); letter-spacing: 0.2em; text-transform: uppercase; }
+  .scroll-line { width: 1px; height: 36px; background: linear-gradient(to bottom, var(--gold), transparent); margin: 6px auto 0; animation: sp 2s ease-in-out infinite; }
+  @keyframes sp { 0%,100% { opacity: 0.3; transform: scaleY(0.6); } 50% { opacity: 1; transform: scaleY(1); } }
+
+  /* ─── SVG Heartbeat ─── */
+  .hb-divider { padding: 20px 0; overflow: hidden; }
+  .hb-svg { width: 100%; height: 60px; display: block; }
+  .hb-line { fill: none; stroke: var(--gold); stroke-width: 2; stroke-dasharray: 2000; stroke-dashoffset: 2000; }
+
+  /* ─── Accordion with REAL PHOTOS ─── */
+  .hooks-section { padding: 80px 24px 100px; max-width: 1100px; margin: 0 auto; }
+  .sec-head { text-align: center; margin-bottom: 52px; }
+  .sec-head h2 { font-size: clamp(28px, 4vw, 46px); margin-top: 10px; font-weight: 600; }
+  .accordion { display: flex; gap: 8px; height: 55vh; min-height: 320px; max-height: 500px; }
+  .acc-p { flex: 1; border-radius: 16px; overflow: hidden; position: relative; cursor: pointer; transition: flex 0.65s cubic-bezier(0.4,0,0.2,1); }
+  .acc-p:hover { flex: 5; }
+  .acc-p .abg { position: absolute; inset: 0; background-size: cover; background-position: center; transition: transform 0.65s cubic-bezier(0.4,0,0.2,1); }
+  .acc-p:hover .abg { transform: scale(1.08); }
+  .acc-p .agr { position: absolute; inset: 0; background: linear-gradient(to top, rgba(5,13,26,0.95) 0%, rgba(5,13,26,0.4) 40%, rgba(5,13,26,0.2) 100%); }
+  .acc-p .ainfo { position: absolute; bottom: 0; left: 0; right: 0; padding: 24px; transform: translateY(20px); opacity: 0; transition: all 0.5s cubic-bezier(0.4,0,0.2,1); }
+  .acc-p:hover .ainfo { transform: translateY(0); opacity: 1; }
+  .ainfo h3 { font-family: var(--font-sans); font-size: 20px; font-weight: 600; margin-bottom: 8px; }
+  .ainfo p { font-size: 15px; color: var(--gray-text); line-height: 1.7; }
+  .ainfo .usp { margin-top: 12px; padding: 6px 12px; border-radius: 8px; background: rgba(7,89,44,0.2); color: #4ade80; font-size: 13px; font-weight: 600; display: inline-block; }
+  .anum { position: absolute; top: 16px; left: 18px; font-family: var(--font-heading); font-size: 52px; font-weight: 700; color: white; opacity: 0.15; }
+
+  /* ─── Audience with PHOTOS ─── */
+  .audience-section { padding: 80px 24px; max-width: 1000px; margin: 0 auto; }
+  .aud-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .aud-card { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; border-top: 3px solid var(--border); transition: transform 0.3s; }
+  .aud-card:hover { transform: translateY(-4px); }
+  .aud-card.navy-top { border-top-color: var(--navy); }
+  .aud-card.gold-top { border-top-color: var(--gold); }
+  .aud-img { width: 100%; height: 180px; object-fit: cover; }
+  .aud-body { padding: 24px; }
+  .aud-badge { display: inline-block; padding: 4px 12px; border-radius: 100px; font-size: 12px; font-weight: 700; margin-bottom: 14px; }
+  .aud-badge-navy { background: rgba(15,42,74,0.3); color: #5a8abd; }
+  .aud-badge-gold { background: rgba(212,185,120,0.15); color: var(--gold); }
+  .aud-card .quote { font-size: 17px; font-weight: 500; line-height: 1.5; margin-bottom: 10px; }
+  .aud-card .source { font-size: 13px; color: var(--muted); font-style: italic; margin-bottom: 14px; }
+  .aud-card .answer { font-size: 15px; color: var(--muted); line-height: 1.7; }
+  .aud-card .answer strong { color: var(--gold); }
+
+  /* ─── Journey with thumbnails ─── */
+  .journey-section { padding: 80px 24px 100px; max-width: 850px; margin: 0 auto; }
+  .j-step { display: flex; gap: 24px; margin-bottom: 44px; position: relative; }
+  .j-step::before { content: ''; position: absolute; left: 23px; top: 52px; bottom: -44px; width: 2px; background: linear-gradient(to bottom, var(--gold), var(--border)); }
+  .j-step:last-child::before { display: none; }
+  .j-dot { width: 48px; height: 48px; border-radius: 50%; border: 2px solid var(--gold); display: flex; align-items: center; justify-content: center; flex-shrink: 0; background: var(--bg); z-index: 1; }
+  .j-dot .pulse { width: 12px; height: 12px; border-radius: 50%; background: var(--gold); animation: dp 2s ease-in-out infinite; }
+  @keyframes dp { 0%,100% { transform: scale(1); opacity: 0.5; } 50% { transform: scale(1.4); opacity: 1; } }
+  .j-main { flex: 1; }
+  .j-content .day-tag { font-family: var(--font-mono); font-size: 12px; color: var(--gold); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 6px; }
+  .j-content h3 { font-family: var(--font-sans); font-size: 19px; font-weight: 600; margin-bottom: 6px; }
+  .j-content p { font-size: 16px; color: var(--muted); line-height: 1.7; }
+  .j-thumb { width: 100%; height: 140px; object-fit: cover; border-radius: 12px; margin-top: 12px; border: 1px solid var(--border); }
+  .j-chips { margin-top: 10px; display: flex; flex-wrap: wrap; gap: 6px; }
+  .j-chips .chip { font-size: 12px; padding: 4px 10px; border-radius: 6px; border: 1px solid var(--border); color: var(--muted); }
+
+  /* ─── Flip Cards — Credentials ─── */
+  .flip-section { padding: 80px 24px; max-width: 960px; margin: 0 auto; }
+  .flip-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  .flip-card { perspective: 1000px; height: 200px; cursor: pointer; }
+  .flip-inner { position: relative; width: 100%; height: 100%; transition: transform 0.6s; transform-style: preserve-3d; }
+  .flip-card:hover .flip-inner, .flip-card.flipped .flip-inner { transform: rotateY(180deg); }
+  .flip-f, .flip-b { position: absolute; inset: 0; backface-visibility: hidden; border-radius: 16px; padding: 28px; display: flex; flex-direction: column; justify-content: center; }
+  .flip-f { background: var(--surface); border: 1px solid var(--border); }
+  .flip-b { background: linear-gradient(135deg, var(--navy) 0%, #0a1628 100%); border: 1px solid var(--gold); transform: rotateY(180deg); }
+  .flip-f .inst-logo { font-family: var(--font-hook); font-size: 24px; font-weight: 700; margin-bottom: 8px; }
+  .flip-f .badge { display: inline-block; padding: 4px 10px; border-radius: 100px; font-size: 11px; font-weight: 700; margin-bottom: 12px; width: fit-content; }
+  .flip-f h3 { font-family: var(--font-sans); font-size: 16px; font-weight: 600; }
+  .flip-f p { font-size: 13px; color: var(--muted); margin-top: 4px; }
+  .flip-b p { font-size: 15px; color: var(--cream); line-height: 1.6; }
+  .bt { background: rgba(7,89,44,0.15); color: #4ade80; }
+  .bg { background: rgba(212,185,120,0.15); color: var(--gold); }
+  .bp { background: rgba(139,92,246,0.15); color: #a78bfa; }
+  .flip-hint { text-align: center; margin-top: 12px; font-size: 12px; color: var(--muted); }
+
+  /* ─── Pricing ─── */
+  .pricing-section { padding: 80px 24px; max-width: 1060px; margin: 0 auto; }
+  .price-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+  .price-card { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 28px 20px; text-align: center; transition: transform 0.3s, border-color 0.3s; display: flex; flex-direction: column; }
+  .price-card:hover { transform: translateY(-4px); }
+  .price-card.featured { border-color: var(--gold); position: relative; }
+  .price-card.featured::before { content: 'แนะนำ'; position: absolute; top: -11px; left: 50%; transform: translateX(-50%); background: linear-gradient(135deg, var(--gold-from), var(--gold-to)); color: var(--navy-deep); font-size: 11px; font-weight: 700; padding: 3px 14px; border-radius: 100px; }
+  .price-tier { font-size: 14px; font-weight: 600; margin-bottom: 12px; }
+  .price-amount { font-family: var(--font-heading); font-size: 40px; font-weight: 700; color: var(--gold); margin-bottom: 4px; line-height: 1; }
+  .price-amount.free { color: #4ade80; }
+  .price-orig { font-size: 13px; color: var(--muted); text-decoration: line-through; margin-bottom: 14px; min-height: 18px; }
+  .price-cond { font-size: 13px; color: var(--muted); line-height: 1.5; margin-bottom: 20px; flex: 1; }
+  .price-btn { display: block; padding: 10px 16px; border-radius: 100px; text-decoration: none; font-size: 14px; font-weight: 600; transition: all 0.2s cubic-bezier(0.4,0,0.2,1); position: relative; overflow: hidden; }
+  .price-btn-gold { background: linear-gradient(135deg, var(--gold-from), var(--gold-to)); color: var(--navy-deep); box-shadow: 0 2px 12px rgba(212,146,10,0.35); }
+  .price-btn-gold:hover { box-shadow: 0 4px 20px rgba(212,146,10,0.45); transform: translateY(-2px); }
+  .price-btn-gold::after { content: ''; position: absolute; inset: 0; transform: translateX(-100%); background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent); transition: transform 0.7s ease-in-out; }
+  .price-btn-gold:hover::after { transform: translateX(100%); }
+  .price-btn-outline { border: 1px solid var(--border); color: var(--cream); }
+  .price-btn-outline:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-2px); }
+
+  /* CTA after pricing */
+  .pricing-cta { text-align: center; margin-top: 32px; font-size: 14px; color: var(--muted); }
+  .pricing-cta strong { color: var(--cream); }
+
+  /* ─── FAQ ─── */
+  .faq-section { padding: 80px 24px; max-width: 720px; margin: 0 auto; }
+  .faq-item { border-bottom: 1px solid var(--border); }
+  .faq-q { padding: 20px 0; font-size: 17px; font-weight: 500; cursor: pointer; display: flex; justify-content: space-between; align-items: center; transition: color 0.3s; }
+  .faq-q:hover { color: var(--gold); }
+  .faq-q .arrow { transition: transform 0.3s; font-size: 20px; color: var(--muted); }
+  .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
+  .faq-a-inner { padding: 0 0 20px; font-size: 16px; color: var(--muted); line-height: 1.7; }
+  .faq-item.open .faq-a { max-height: 300px; }
+  .faq-item.open .arrow { transform: rotate(45deg); }
+
+  /* ─── Final CTA ─── */
+  .cta-section { padding: 120px 24px; text-align: center; position: relative; }
+  .cta-section::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at center, rgba(232,93,93,0.06) 0%, transparent 60%); pointer-events: none; }
+  .cta-section h2 { font-size: clamp(28px, 5vw, 52px); font-weight: 600; line-height: 1.15; margin-bottom: 18px; position: relative; }
+  .cta-section p { font-size: 17px; color: var(--muted); margin-bottom: 32px; position: relative; }
+  .cta-btn { display: inline-block; padding: 18px 48px; border-radius: 100px; background: linear-gradient(135deg, var(--gold-from), var(--gold-to)); color: var(--navy-deep); font-weight: 700; font-size: 17px; text-decoration: none; position: relative; overflow: hidden; box-shadow: 0 2px 12px rgba(212,146,10,0.35); transition: transform 0.2s cubic-bezier(0.4,0,0.2,1), box-shadow 0.2s; }
+  .cta-btn:hover { transform: translateY(-3px); box-shadow: 0 4px 20px rgba(212,146,10,0.45); }
+  .cta-btn::after { content: ''; position: absolute; inset: 0; transform: translateX(-100%); background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent); transition: transform 0.7s ease-in-out; }
+  .cta-btn:hover::after { transform: translateX(100%); }
+  .cta-contacts { margin-top: 28px; display: flex; gap: 24px; justify-content: center; flex-wrap: wrap; font-size: 14px; color: var(--muted); position: relative; }
+  .cta-contacts strong { color: rgba(241,241,232,0.8); }
+
+  /* ─── Footer (ex4 style) ─── */
+  footer { background: var(--navy-deep); padding: 40px 5% 40px; border-top: 1px solid rgba(255,255,255,0.1); }
+  .footer-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+  .footer-brand { display: flex; align-items: center; gap: 8px; }
+  .footer-brand img { height: 20px; opacity: 0.4; }
+  .footer-brand span { font-size: 13px; color: rgba(255,255,255,0.2); }
+  .footer-socials { display: flex; gap: 16px; }
+  .footer-socials a { color: rgba(255,255,255,0.3); text-decoration: none; font-size: 18px; transition: color 0.2s, transform 0.2s; }
+  .footer-socials a:hover { color: var(--gold); transform: scale(1.1); }
+  .footer-copy { font-size: 12px; color: rgba(255,255,255,0.2); }
+
+  /* ─── Responsive ─── */
+  @media (max-width: 768px) {
+    nav .links { display: none; }
+    .ham-btn { display: block; }
+    .desktop-only { display: none !important; }
+    .mobile-menu.open { display: block; }
+    .mobile-menu { position: absolute; top: 100%; left: 0; right: 0; background: var(--navy); border-top: 1px solid rgba(255,255,255,0.1); padding: 20px 5%; display: none; }
+    .mobile-menu a { display: block; color: rgba(255,255,255,0.7); text-decoration: none; font-size: 15px; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.06); }
+    .mobile-menu a:hover { color: #fff; }
+    .mobile-menu .shine-btn { display: block; text-align: center; margin-top: 12px; }
+    .accordion { flex-direction: column; height: auto; }
+    .acc-p { min-height: 180px; }
+    .acc-p .ainfo { transform: translateY(0); opacity: 1; }
+    .flip-grid, .aud-grid { grid-template-columns: 1fr; }
+    .price-grid { grid-template-columns: 1fr 1fr; }
+    .hero { height: 400vh; }
+    .j-step { gap: 16px; }
+    .j-thumb { height: 120px; }
+    .flip-card { height: 180px; }
+    .stats-row { gap: 28px; }
+    .footer-inner { flex-direction: column; text-align: center; }
+  }
+  @media (max-width: 480px) {
+    .price-grid { grid-template-columns: 1fr; }
+  }
+
+  html { scroll-behavior: smooth; }
+  body::after { content: ''; position: fixed; inset: 0; z-index: 9999; pointer-events: none; opacity: 0.02; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+</style>
+</head>
+<body>
+
+<!-- ═══ NAV (ex4 style) ═══ -->
+<nav id="main-nav">
+  <a href="#" class="nav-brand">
+    <img src="./images/logo-gold.png" alt="Aspect" class="nav-logo">
+    <span class="nav-label">Med Camp</span>
+  </a>
+  <div class="links">
+    <a href="#hooks">ทำไมต้องค่ายนี้</a>
+    <a href="#journey">Journey</a>
+    <a href="#credentials">Credentials</a>
+    <a href="#pricing">ราคา</a>
+    <a href="#faq">FAQ</a>
+  </div>
+  <div style="display:flex;align-items:center;gap:12px;">
+    <a href="https://lin.ee/AspectCareer" class="shine-btn desktop-only">สมัครเข้าร่วมค่าย →</a>
+    <button class="ham-btn" id="ham-toggle" aria-label="Toggle menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+  </div>
+  <div class="mobile-menu">
+    <a href="#hooks">ทำไมต้องค่ายนี้</a>
+    <a href="#journey">Journey</a>
+    <a href="#credentials">Credentials</a>
+    <a href="#pricing">ราคา</a>
+    <a href="#faq">FAQ</a>
+    <a href="https://lin.ee/AspectCareer" class="shine-btn">สมัครเข้าร่วมค่าย →</a>
+  </div>
+</nav>
+
+<!-- ═══ HERO — Pinned + Scroll Content Overlays ═══ -->
+<section class="hero">
+  <div class="hero-pin">
+    <canvas id="hero-canvas"></canvas>
+    <div class="hero-dim"></div>
+
+    <div class="hero-slide" id="slide-1">
+      <div class="slide-inner">
+        <div class="label">Aspect Med Camp 2026</div>
+        <h1 style="margin-top: 14px;">ทุก<span class="red">จังหวะหัวใจ</span><br>มีเรื่องเล่า</h1>
+        <p>จากนักเรียนที่ยังไม่แน่ใจ สู่ผู้สร้าง Healthcare Innovation — ด้วยมือของน้องเอง</p>
+      </div>
+    </div>
+
+    <div class="hero-slide" id="slide-2">
+      <div class="slide-inner">
+        <h2>1–3 พฤษภาคม 2569<br><span class="gold">เชียงใหม่ · 3 วัน 2 คืน</span></h2>
+        <p>Healthcare Innovation Camp สำหรับนักเรียน ม.4–ม.6 ที่สนใจเส้นทางแพทย์</p>
+      </div>
+    </div>
+
+    <div class="hero-slide" id="slide-3">
+      <div class="slide-inner">
+        <div class="stats-row">
+          <div class="stat-box"><div class="num">3</div><div class="slabel">วันเต็ม</div></div>
+          <div class="stat-box"><div class="num">60</div><div class="slabel">ที่นั่งจำกัด</div></div>
+          <div class="stat-box"><div class="num">3</div><div class="slabel">Credentials</div></div>
+        </div>
+        <p style="margin-top: 28px; font-size: 18px; color: rgba(241,241,232,0.5); letter-spacing: 0.08em;">สำหรับนักเรียน ม.4 – ม.6 ที่สนใจเส้นทางแพทย์</p>
+      </div>
+    </div>
+
+    <div class="hero-slide" id="slide-4">
+      <div class="slide-inner">
+        <h2 style="font-size: clamp(24px, 3.5vw, 36px); margin-bottom: 24px;">3 วันนี้จะได้อะไร</h2>
+        <ul class="bullet-list">
+          <li>เลิก "เดาสุ่ม" ว่าอยากเดินเส้นทางแพทย์หรือเปล่า</li>
+          <li>สร้าง Healthcare Innovation จริง ตัดสินโดยหมอจริง</li>
+          <li>ได้ MicroCredential KMUTT + Certificate SET ใส่พอร์ต TCAS ได้ทันที</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="scroll-cue"><span>Scroll</span><div class="scroll-line"></div></div>
+  </div>
+</section>
+
+<!-- Heartbeat divider -->
+<section class="hb-divider">
+  <svg class="hb-svg" viewBox="0 0 1200 60" preserveAspectRatio="none">
+    <path class="hb-line" d="M0,30 L200,30 L230,30 L250,8 L270,52 L290,15 L310,30 L500,30 L530,30 L550,8 L570,52 L590,15 L610,30 L800,30 L830,30 L850,8 L870,52 L890,15 L910,30 L1200,30"/>
+  </svg>
+</section>
+
+<!-- ═══ Accordion with REAL CAMP PHOTOS ═══ -->
+<section class="hooks-section" id="hooks">
+  <div class="sec-head"><div class="label">ทำไมต้องค่ายนี้</div><h2>ค่ายเดียวที่ทำทั้ง 3 อย่างนี้</h2></div>
+  <div class="accordion">
+    <div class="acc-p">
+      <div class="abg" style="background-image: url('./images/workshop-hands-on.webp');"></div>
+      <div class="agr"></div><div class="anum">01</div>
+      <div class="ainfo"><h3>ลงมือทำจริง</h3><p>สร้าง Healthcare Innovation Project แก้ปัญหาสุขภาพด้วย Design Thinking — กระบวนการที่ Stanford, IDEO ใช้จริง ไม่ใช่แค่นั่งฟัง</p><div class="usp">✓ ต่างจากค่ายอื่นที่เน้นดูงานอย่างเดียว</div></div>
+    </div>
+    <div class="acc-p">
+      <div class="abg" style="background-image: url('./images/award-ceremony.webp');"></div>
+      <div class="agr"></div><div class="anum">02</div>
+      <div class="ainfo"><h3>Credential ที่ verify ได้</h3><p>MicroCredential จาก KMUTT + Pitching Certificate จาก SET — กรรมการ TCAS กดลิงก์ดูได้ทันที ไม่ใช่เกียรติบัตรกระดาษ</p><div class="usp">✓ ไม่มีค่ายเอกชนรายใดมี credential ระดับนี้</div></div>
+    </div>
+    <div class="acc-p">
+      <div class="abg" style="background-image: url('./images/discussion.webp');"></div>
+      <div class="agr"></div><div class="anum">03</div>
+      <div class="ainfo"><h3>ค้นพบตัวเอง</h3><p>ออกไปพร้อมคำตอบที่ชัดเจนว่า "เส้นทางแพทย์คือเส้นทางของฉัน" — เพราะได้ลองจริง ไม่ใช่แค่ฟังบรรยาย</p><div class="usp">✓ ออกแบบมาสำหรับคนที่ยังไม่แน่ใจ</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ Audience with PHOTOS ═══ -->
+<section class="audience-section">
+  <div class="sec-head"><div class="label">ค่ายนี้เหมาะกับใคร</div><h2>เราออกแบบมาเพื่อ 2 กลุ่มนี้</h2></div>
+  <div class="aud-grid">
+    <div class="aud-card navy-top">
+      <img src="./images/team-tablet.webp" alt="นักเรียนทำงานเป็นทีม" class="aud-img">
+      <div class="aud-body">
+        <div class="aud-badge aud-badge-navy">นักเรียน ม.4–ม.5</div>
+        <div class="quote">"ไม่รู้จะเริ่มเก็บพอร์ตยังไง และไม่รู้ว่าต้องหากิจกรรมแบบไหนถึงจะเข้าตากรรมการ"</div>
+        <div class="source">— เสียงจริงจาก Pantip</div>
+        <div class="answer">ค่ายนี้คือ <strong>จุดเริ่มต้นที่ถูกทาง</strong> — ได้ทั้ง Innovation Project, credential จากสถาบันจริง และยังมีเวลาเหลืออีก 2–3 ปีให้ต่อยอด</div>
+      </div>
+    </div>
+    <div class="aud-card gold-top">
+      <img src="./images/lab-hands-on.webp" alt="นักเรียนใน lab" class="aud-img">
+      <div class="aud-body">
+        <div class="aud-badge aud-badge-gold">นักเรียน ม.6</div>
+        <div class="quote">"พอร์ตเราธรรมดา ไม่ใช่เด็กกิจกรรม จะเตรียมใจล่วงหน้า"</div>
+        <div class="source">— เสียงจริงจาก Pantip</div>
+        <div class="answer">ยังทัน — 3 วันนี้จะมี <strong>Innovation Project + credential 3 ชิ้น</strong> ที่พิสูจน์ว่าคิดแบบหมอได้จริง</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ Journey with THUMBNAILS ═══ -->
+<section class="journey-section" id="journey">
+  <div class="sec-head"><div class="label">The Journey</div><h2>จังหวะการเปลี่ยนแปลง</h2></div>
+
+  <div class="j-step"><div class="j-dot"><div class="pulse"></div></div><div class="j-main"><div class="j-content"><div class="day-tag">Day 1 — 1 พ.ค.</div><h3>Empathize & Define</h3><p>ลงพื้นที่จริง ค้นหา Pain Points ผู้ป่วย สร้าง POV Statement + Healthcare Innovation Intro โดยแพทย์ผู้เชี่ยวชาญ</p></div><img src="./images/workshop-table.webp" alt="Workshop Day 1" class="j-thumb"><div class="j-chips"><span class="chip">Hacking Health</span><span class="chip">Empathize</span><span class="chip">Define</span><span class="chip">Team Consultation</span></div></div></div>
+
+  <div class="j-step"><div class="j-dot"><div class="pulse"></div></div><div class="j-main"><div class="j-content"><div class="day-tag">Day 2 — 2 พ.ค.</div><h3>Ideate & Prototype</h3><p>Crazy 8s, AI in Healthcare, สร้าง Low-fi Prototype จริง + Business Model — ไอเดียกลายเป็นรูปร่าง</p></div><img src="./images/design-thinking.webp" alt="Design Thinking" class="j-thumb"><div class="j-chips"><span class="chip">Ideate</span><span class="chip">AI Workshop</span><span class="chip">Prototype</span><span class="chip">Business Model</span></div></div></div>
+
+  <div class="j-step"><div class="j-dot"><div class="pulse"></div></div><div class="j-main"><div class="j-content"><div class="day-tag">Day 3 — 3 พ.ค.</div><h3>Pitch & Transform</h3><p>Pitching Challenge ต่อหน้ากรรมการแพทย์ + นักลงทุน ประกาศผล + มอบ Certificate</p></div><img src="./images/group-awards.webp" alt="Awards" class="j-thumb"><div class="j-chips"><span class="chip">Pitch Prep</span><span class="chip">Pitching Challenge</span><span class="chip">Award Ceremony</span></div></div></div>
+
+  <div class="j-step" style="margin-bottom: 0;"><div class="j-dot" style="border-color: var(--red);"><div class="pulse" style="background: var(--red);"></div></div><div class="j-main"><div class="j-content"><div class="day-tag" style="color: var(--red);">After Camp</div><h3>ออกไปพร้อมคำตอบ</h3><p>MicroCredential + SET Certificate + AI Certificate + Innovation Project — และความชัดเจนว่าเส้นทางแพทย์ใช่สำหรับน้องไหม</p></div></div></div>
+</section>
+
+<!-- ═══ Flip Cards — Credentials ═══ -->
+<section class="flip-section" id="credentials">
+  <div class="sec-head"><div class="label">Credentials</div><h2>3 Credentials ที่พิสูจน์ได้</h2></div>
+  <div class="flip-grid">
+    <div class="flip-card"><div class="flip-inner"><div class="flip-f"><div class="badge bt">Verifiable</div><div class="inst-logo gold">KMUTT</div><h3>MicroCredential Digital Badge</h3><p>มหาวิทยาลัยเทคโนโลยีพระจอมเกล้าธนบุรี</p></div><div class="flip-b"><p>Verifiable digital badge ที่มี metadata ครบ — สมรรถนะที่ผ่าน, ผู้ประเมิน, หลักฐาน กรรมการ TCAS กดลิงก์ดูได้ทันที ต่างจากเกียรติบัตรกระดาษ</p></div></div></div>
+    <div class="flip-card"><div class="flip-inner"><div class="flip-f"><div class="badge bg">Official</div><div class="inst-logo gold">SET</div><h3>Pitching Certificate</h3><p>ตลาดหลักทรัพย์แห่งประเทศไทย</p></div><div class="flip-b"><p>Certificate จากตลาดหลักทรัพย์แห่งประเทศไทย — พิสูจน์ทักษะการนำเสนอระดับ professional ต่อหน้ากรรมการจริง</p></div></div></div>
+    <div class="flip-card"><div class="flip-inner"><div class="flip-f"><div class="badge bp">New</div><div class="inst-logo" style="color: #a78bfa;">AI</div><h3>AI in Healthcare Certificate</h3><p>AI Skill Training</p></div><div class="flip-b"><p>ทักษะ AI สำหรับวงการแพทย์ยุคใหม่ — เรียนรู้ tools ที่แพทย์ใช้จริงในการวินิจฉัยและวิจัย</p></div></div></div>
+    <div class="flip-card"><div class="flip-inner"><div class="flip-f"><div class="badge bt">TCAS Ready</div><div class="inst-logo gold">PORT</div><h3>Innovation Project + Pitch Video</h3><p>ผลงานจริงสำหรับพอร์ต TCAS รอบ 1</p></div><div class="flip-b"><p>ผลงาน Healthcare Innovation จริง + Pitch Video — ใส่พอร์ต TCAS รอบ 1 ได้ทันที กรรมการเห็นกระบวนการคิดชัด</p></div></div></div>
+  </div>
+  <div class="flip-hint">ร่วมกับ KMUTT · SET · STEP CMU · AI Skill Training</div>
+</section>
+
+<!-- ═══ Pricing with CTA PER TIER ═══ -->
+<section class="pricing-section" id="pricing">
+  <div class="sec-head"><div class="label">ค่าใช้จ่าย</div><h2>ทุนและราคาค่าเข้าร่วม</h2></div>
+  <div class="price-grid">
+    <div class="price-card">
+      <div class="price-tier">Full Scholarship</div>
+      <div class="price-amount free">FREE</div>
+      <div class="price-orig">5,500</div>
+      <div class="price-cond">คะแนนสูงสุด + สัมภาษณ์ผ่าน · มีเพียง 3 ทุน</div>
+      <a href="https://lin.ee/AspectCareer" class="price-btn price-btn-gold">สมัครทุน →</a>
+    </div>
+    <div class="price-card">
+      <div class="price-tier">Half Scholarship</div>
+      <div class="price-amount">2,750</div>
+      <div class="price-orig">5,500</div>
+      <div class="price-cond">Essay + แสดง motivation ชัดเจน · 10 ทุน</div>
+      <a href="https://lin.ee/AspectCareer" class="price-btn price-btn-outline">สมัครทุน →</a>
+    </div>
+    <div class="price-card featured">
+      <div class="price-tier">Early Bird</div>
+      <div class="price-amount">3,900</div>
+      <div class="price-orig">5,500</div>
+      <div class="price-cond">สมัครก่อน deadline · ลด 29%</div>
+      <a href="https://lin.ee/AspectCareer" class="price-btn price-btn-gold">สมัคร Early Bird →</a>
+    </div>
+    <div class="price-card">
+      <div class="price-tier">ราคาปกติ</div>
+      <div class="price-amount">5,500</div>
+      <div class="price-orig">&nbsp;</div>
+      <div class="price-cond">Credential ครบ 3 ชิ้น + Innovation Project</div>
+      <a href="https://lin.ee/AspectCareer" class="price-btn price-btn-outline">สมัครเลย →</a>
+    </div>
+  </div>
+  <div class="pricing-cta">เหลือ <strong>38 ที่นั่ง</strong> · สมัครคู่ลดเพิ่ม 300 บาท/คน · <a href="https://lin.ee/AspectCareer" style="color: var(--gold); text-decoration: underline;">ทัก LINE สอบถาม →</a></div>
+</section>
+
+<!-- ═══ FAQ ═══ -->
+<section class="faq-section" id="faq">
+  <div class="sec-head"><div class="label">คำถามที่พบบ่อย</div><h2>FAQ</h2></div>
+  <div class="faq-item"><div class="faq-q">เกียรติบัตรใส่พอร์ต TCAS รอบ 1 ได้จริงไหม? <span class="arrow">+</span></div><div class="faq-a"><div class="faq-a-inner">ได้จริง — MicroCredential จาก KMUTT เป็น verifiable digital badge ที่มี metadata ครบ (สมรรถนะที่ผ่าน, ผู้ประเมิน, หลักฐาน) กรรมการกดลิงก์ดูได้ทันที</div></div></div>
+  <div class="faq-item"><div class="faq-q">ต้องมีพื้นฐานอะไรบ้าง? <span class="arrow">+</span></div><div class="faq-a"><div class="faq-a-inner">ไม่จำเป็นต้องมีพื้นฐานด้านแพทย์ — ค่ายออกแบบมาสำหรับน้องที่ "สนใจ" ไม่ใช่คนที่ "พร้อมแล้ว" ทุก session มี facilitator ดูแล</div></div></div>
+  <div class="faq-item"><div class="faq-q">ค่าใช้จ่ายรวมอะไรบ้าง? <span class="arrow">+</span></div><div class="faq-a"><div class="faq-a-inner">รวมทุกอย่าง: ที่พัก 2 คืน อาหารทุกมื้อ วัสดุ workshop ทั้งหมด MicroCredential KMUTT, SET Certificate, AI Certificate และ Portfolio Package ไม่มีค่าใช้จ่ายเพิ่มเติม</div></div></div>
+  <div class="faq-item"><div class="faq-q">ต่างจากค่ายอยากเป็นหมอ/MEDCHIC อย่างไร? <span class="arrow">+</span></div><div class="faq-a"><div class="faq-a-inner">ค่ายอยากเป็นหมอ (จุฬา) เน้นสัมผัสชีวิตหมอ แต่แข่งขันสูง MEDCHIC เน้น hackathon ส่วน Path to Med เน้น "career clarity" — น้องที่ยังไม่แน่ใจสมัครได้เลย</div></div></div>
+  <div class="faq-item"><div class="faq-q">สมัครคู่กับเพื่อนได้ไหม? <span class="arrow">+</span></div><div class="faq-a"><div class="faq-a-inner">ได้เลย! สมัครคู่กับเพื่อน ลดเพิ่มอีก 300 บาท/คน ระบุชื่อเพื่อนในฟอร์มสมัคร</div></div></div>
+</section>
+
+<!-- ═══ Final CTA ═══ -->
+<section class="cta-section" id="register">
+  <div class="label" style="margin-bottom: 20px;">เปิดรับสมัครแล้ววันนี้</div>
+  <h2>อย่าให้ความลังเล<br>เป็นเหตุผลที่พลาด<br><span class="gold">3 วันที่อาจเปลี่ยนทิศทางชีวิต</span></h2>
+  <p>1–3 พฤษภาคม 2569 · เชียงใหม่ · เหลือ 38 ที่นั่ง</p>
+  <a href="https://lin.ee/AspectCareer" class="cta-btn">สมัครเข้าร่วมค่าย →</a>
+  <div class="cta-contacts">
+    <span>LINE: <strong>@AspectCareer</strong></span>
+    <span>Email: <strong>hello@aspectcareer.com</strong></span>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <img src="./images/logo-gold.png" alt="Aspect">
+      <span>Aspect Med Camp by AspectCareer</span>
+    </div>
+    <div class="footer-socials">
+      <a href="https://lin.ee/AspectCareer" target="_blank" rel="noopener" aria-label="LINE"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 5.81 2 10.5c0 3.77 3.08 6.94 7.23 7.82.28.06.66.18.75.42.09.21.06.54.03.76l-.12.72c-.04.22-.17.87.76.47s5.04-2.97 6.88-5.08C19.52 13.34 22 11.13 22 10.5 22 5.81 17.52 2 12 2z"/></svg></a>
+      <a href="https://facebook.com/AspectCareer" target="_blank" rel="noopener" aria-label="Facebook"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
+      <a href="https://instagram.com/AspectCareer" target="_blank" rel="noopener" aria-label="Instagram"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg></a>
+    </div>
+    <div class="footer-copy">&copy; 2026 AspectCareer. All rights reserved.</div>
+  </div>
+</footer>
+
+<script>
+gsap.registerPlugin(ScrollTrigger);
+
+// ═══ Nav scroll shrink ═══
+const mainNav = document.getElementById('main-nav');
+window.addEventListener('scroll', () => {
+  mainNav.classList.toggle('scrolled', window.scrollY > 60);
+}, { passive: true });
+
+// ═══ Hamburger toggle ═══
+const hamToggle = document.getElementById('ham-toggle');
+const mobileMenu = document.querySelector('.mobile-menu');
+hamToggle.addEventListener('click', () => { mobileMenu.classList.toggle('open'); });
+document.querySelectorAll('.mobile-menu a').forEach(a => {
+  a.addEventListener('click', () => { mobileMenu.classList.remove('open'); });
+});
+
+// ═══ Canvas Image Sequence ═══
+const FC=91,cv=document.getElementById('hero-canvas'),cx=cv.getContext('2d');
+const imgs=[],ph={frame:0};let ld=0;
+function rs(){cv.width=innerWidth;cv.height=innerHeight;dr(ph.frame);}
+function dr(f){const i=imgs[Math.round(f)];if(!i||!i.complete)return;const s=Math.max(cv.width/i.width,cv.height/i.height);cx.clearRect(0,0,cv.width,cv.height);cx.drawImage(i,(cv.width-i.width*s)/2,(cv.height-i.height*s)/2,i.width*s,i.height*s);}
+for(let i=1;i<=FC;i++){const m=new Image();m.src=`./frames/frame_${String(i).padStart(3,'0')}.webp`;m.onload=()=>{ld++;if(i===1)rs();};imgs.push(m);}
+setTimeout(()=>{if(ld===0){const m=new Image();m.src='./hero.png';m.onload=()=>{imgs[0]=m;rs();};}},3000);
+addEventListener('resize',rs);
+gsap.to(ph,{frame:FC-1,ease:'none',onUpdate:()=>dr(ph.frame),scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom bottom',scrub:0.5}});
+
+// ═══ Pinned Hero Scroll Overlays ═══
+const slides=document.querySelectorAll('.hero-slide');
+const ts=slides.length;
+gsap.set('#slide-1',{opacity:1});
+slides.forEach((s,i)=>{
+  const si=(i/ts)*0.8, fe=si+0.05, he=((i+1)/ts)*0.8-0.05, fo=((i+1)/ts)*0.8;
+  if(i===0){gsap.to(s,{opacity:0,scrollTrigger:{trigger:'.hero',start:`${he*100}% top`,end:`${fo*100}% top`,scrub:true}});}
+  else{
+    gsap.fromTo(s,{opacity:0,y:30},{opacity:1,y:0,scrollTrigger:{trigger:'.hero',start:`${si*100}% top`,end:`${fe*100}% top`,scrub:true}});
+    if(i<ts-1){gsap.to(s,{opacity:0,y:-20,scrollTrigger:{trigger:'.hero',start:`${he*100}% top`,end:`${fo*100}% top`,scrub:true}});}
+    else{gsap.to(s,{opacity:0,scrollTrigger:{trigger:'.hero',start:'85% top',end:'95% top',scrub:true}});}
+  }
+});
+
+// ═══ SVG Heartbeat ═══
+gsap.to('.hb-line',{strokeDashoffset:0,scrollTrigger:{trigger:'.hb-divider',start:'top 85%',end:'bottom 50%',scrub:1}});
+
+// ═══ Accordion ═══
+gsap.from('.acc-p',{opacity:0,y:50,stagger:0.12,duration:0.7,scrollTrigger:{trigger:'.hooks-section',start:'top 70%',toggleActions:'play none none none'}});
+
+// ═══ Audience ═══
+gsap.from('.aud-card',{opacity:0,y:30,stagger:0.15,duration:0.7,scrollTrigger:{trigger:'.audience-section',start:'top 70%',toggleActions:'play none none none'}});
+
+// ═══ Journey ═══
+gsap.from('.j-step',{opacity:0,x:-30,stagger:0.18,duration:0.7,scrollTrigger:{trigger:'.journey-section',start:'top 65%',toggleActions:'play none none none'}});
+
+// ═══ Flip Cards (tap support for mobile) ═══
+document.querySelectorAll('.flip-card').forEach(c=>{
+  c.addEventListener('click',()=>c.classList.toggle('flipped'));
+});
+gsap.from('.flip-card',{opacity:0,rotateY:-15,stagger:0.1,duration:0.6,scrollTrigger:{trigger:'.flip-section',start:'top 70%',toggleActions:'play none none none'}});
+
+// ═══ Pricing ═══
+gsap.from('.price-card',{opacity:0,y:30,stagger:0.1,duration:0.6,scrollTrigger:{trigger:'.pricing-section',start:'top 70%',toggleActions:'play none none none'}});
+
+// ═══ FAQ ═══
+document.querySelectorAll('.faq-q').forEach(q=>{q.addEventListener('click',()=>q.parentElement.classList.toggle('open'));});
+
+// ═══ CTA ═══
+gsap.from('.cta-section h2, .cta-section p, .cta-btn, .cta-contacts',{opacity:0,y:25,stagger:0.1,duration:0.7,scrollTrigger:{trigger:'.cta-section',start:'top 75%',toggleActions:'play none none none'}});
+</script>
+</body>
+</html>
