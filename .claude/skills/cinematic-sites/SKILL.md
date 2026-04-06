@@ -254,8 +254,29 @@ When creating new interactive modules, follow these patterns:
 - Primary: `bg-navy` (#0F2A4A), `text-cream` (#F1F1E8), `text-gold` (#D4B978)
 - Gradient: `from-gold-from to-gold-to` (#c3a456 → #f0cb46)
 - Shadows: `shadow-gold`, `shadow-gold-hover`
-- Radius: `rounded-sm` (8px), `rounded-md` (12px), `rounded-lg` (20px)
+- Radius: `rounded-sm` (8px), `rounded-md` (12px), `rounded-lg` (20px), `rounded-2xl` (16px) for cards
 - Fonts: `font-heading` (Cormorant Garamond), `font-hook` (Garet), `font-sans` (IBM Plex Sans Thai)
+
+**Font rules (critical for Thai language):**
+- Thai text (headings, body, labels): always use `font-sans` (IBM Plex Sans Thai)
+- `font-heading` (Cormorant Garamond): English text and numbers only — does NOT support Thai, falls back to Times New Roman
+- `font-hook` (Garet): English labels only (tab labels, badge text) — renders Thai characters poorly
+- Section eyebrow labels: use `font-sans font-semibold tracking-[0.25em] uppercase`
+- Section h2 headings: use `font-sans font-bold text-3xl md:text-5xl`
+
+**Typography scale (minimum sizes for readability):**
+- Body text: `text-base` (16px) minimum, `text-sm` (14px) for secondary
+- Hero sub-copy: `text-lg sm:text-xl` with `leading-relaxed`
+- Bullet/list items: `text-base sm:text-lg`
+- Card labels/metadata: `text-sm` (14px) minimum — never use `text-[12px]` or `text-[13px]`
+- Eyebrow labels: `text-xs` (12px) is acceptable only with `tracking-[0.25em] uppercase`
+
+**Card design standards:**
+- Glassmorphism: `bg-white/10 backdrop-blur-[16px] border border-white/18` (stronger than default)
+- Card padding: `p-7` minimum for small cards, `p-8` to `p-10` for featured/large cards
+- Card radius: `rounded-2xl` (16px)
+- Hover: `scale: 1.02-1.03`, gold border glow for premium feel
+- Featured cards: `ring-2 ring-gold/50` + scale bump + "แนะนำ" badge
 
 **Additional cinematic modules to consider building:**
 - Accordion Slider — hover-expand image cards (horizontal or vertical)
@@ -300,6 +321,15 @@ Follow these rules for all animations:
 5. Add `will-change: transform` on parallax elements for GPU compositing
 6. Test on mobile — reduce frame count or use video element with `playbackRate` control
 7. Respect `prefers-reduced-motion` — provide static fallback
+
+### 3F. Accessibility Rules
+
+1. All interactive elements need `focus-visible:ring-2 focus-visible:ring-gold`
+2. Icon-only buttons need `aria-label`
+3. Ghost buttons: always add visible focus ring with ring-offset
+4. Search inputs: add `focus:ring-1 focus:ring-gold/20`
+5. Never use `transition-all` — list properties explicitly (`transition-colors`, `transition-transform`)
+6. Form inputs need `<label>` or `aria-label`
 
 ---
 
