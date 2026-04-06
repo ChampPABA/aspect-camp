@@ -15,7 +15,8 @@ export default function RevisedNavbar() {
 
   useEffect(() => {
     function onScroll() {
-      setScrolled(window.scrollY > 60);
+      const isScrolled = window.scrollY > 60;
+      setScrolled((prev) => (prev === isScrolled ? prev : isScrolled));
     }
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Search,
@@ -13,11 +13,11 @@ export default function GridFaq() {
   const [query, setQuery] = useState("");
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
-  const filtered = FAQ_ITEMS.filter(
+  const filtered = useMemo(() => FAQ_ITEMS.filter(
     (item) =>
       item.q.toLowerCase().includes(query.toLowerCase()) ||
       item.a.toLowerCase().includes(query.toLowerCase())
-  );
+  ), [query]);
 
   return (
     <section id="faq" className="bg-navy-deep py-20 px-[5%]">

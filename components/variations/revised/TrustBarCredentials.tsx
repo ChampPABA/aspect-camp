@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { CREDENTIALS } from "@/lib/constants";
 
 const tagStyles: Record<string, { bg: string; text: string; border: string }> = {
@@ -41,11 +42,12 @@ export default function TrustBarCredentials() {
           <span className="text-cream/40 text-[13px] tracking-wide">ร่วมกับ</span>
           {partnerLogos.map((logo) => (
             <div key={logo.name} className="relative h-10 w-20 sm:h-12 sm:w-24 grayscale hover:grayscale-0 opacity-60 hover:opacity-100 transition-all duration-300">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
+              <Image
                 src={logo.src}
                 alt={logo.name}
-                className="h-full w-full object-contain"
+                fill
+                className="object-contain"
+                sizes="96px"
               />
             </div>
           ))}

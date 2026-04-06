@@ -26,8 +26,6 @@ export default function SegmentedSchedule() {
     setActiveTab(index);
   }
 
-  const tabs = Array.from(SCHEDULE_TABS);
-
   return (
     <section id="schedule" className="bg-cream-muted py-20 px-[5%]">
       <div className="max-w-3xl mx-auto">
@@ -53,7 +51,7 @@ export default function SegmentedSchedule() {
 
         {/* Segmented control */}
         <div className="flex gap-1 bg-navy/8 rounded-full p-1 mb-10 relative">
-          {tabs.map((tab, i) => (
+          {SCHEDULE_TABS.map((tab, i) => (
             <button
               key={tab}
               onClick={() => handleTabChange(i)}

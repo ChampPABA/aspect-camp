@@ -3,10 +3,10 @@
 import { motion } from "framer-motion";
 import { SPEAKERS } from "@/lib/constants";
 
+const featured = SPEAKERS.find((s) => !s.isPlaceholder);
+const others = SPEAKERS.filter((s) => s !== featured);
+
 export default function GlassSpeakers() {
-  // First non-placeholder speaker is featured
-  const featured = SPEAKERS.find((s) => !s.isPlaceholder);
-  const others = SPEAKERS.filter((s) => s !== featured);
 
   return (
     <section id="speakers" className="bg-navy py-20 px-[5%]">

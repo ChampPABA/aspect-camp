@@ -1,6 +1,12 @@
 "use client";
 
+import { useMemo } from "react";
 import { motion } from "framer-motion";
+
+const charVariants = {
+  hidden: { opacity: 0, y: 4 },
+  visible: { opacity: 1, y: 0 },
+};
 
 export default function TypewriterText({
   text,
@@ -11,7 +17,7 @@ export default function TypewriterText({
   speed?: number;
   className?: string;
 }) {
-  const chars = text.split("");
+  const chars = useMemo(() => text.split(""), [text]);
 
   return (
     <motion.span
@@ -27,10 +33,7 @@ export default function TypewriterText({
       {chars.map((char, i) => (
         <motion.span
           key={i}
-          variants={{
-            hidden: { opacity: 0, y: 4 },
-            visible: { opacity: 1, y: 0 },
-          }}
+          variants={charVariants}
           transition={{ duration: 0.15 }}
         >
           {char}
