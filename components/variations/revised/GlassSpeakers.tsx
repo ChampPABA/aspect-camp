@@ -36,7 +36,7 @@ export default function GlassSpeakers() {
           {/* Featured speaker — spans 2 columns */}
           {featured && (
             <motion.div
-              className="sm:col-span-2 rounded-[20px] p-8 flex flex-col sm:flex-row items-center gap-6"
+              className="sm:col-span-2 lg:col-span-3 rounded-2xl p-10 flex flex-col sm:flex-row items-center gap-8"
               style={{
                 background: "rgba(255,255,255,0.08)",
                 backdropFilter: "blur(12px)",
@@ -75,7 +75,7 @@ export default function GlassSpeakers() {
           {others.map((speaker, i) => (
             <motion.div
               key={i}
-              className="rounded-[20px] p-6 flex flex-col items-center text-center"
+              className="rounded-2xl p-7 flex flex-col items-center text-center"
               style={{
                 background: "rgba(255,255,255,0.06)",
                 backdropFilter: "blur(12px)",
@@ -93,7 +93,7 @@ export default function GlassSpeakers() {
             >
               {/* Avatar */}
               <div
-                className={`w-16 h-16 rounded-full flex items-center justify-center mb-4 ${
+                className={`w-20 h-20 rounded-full flex items-center justify-center mb-5 ${
                   speaker.isPlaceholder
                     ? "bg-white/8 border border-white/15"
                     : "bg-gradient-to-br from-gold-from to-gold-to"
@@ -109,14 +109,14 @@ export default function GlassSpeakers() {
               </div>
 
               <h3
-                className={`font-sans text-[16px] font-semibold mb-1 ${
+                className={`font-sans text-lg font-semibold mb-1 ${
                   speaker.isPlaceholder ? "text-cream/40" : "text-cream"
                 }`}
               >
                 {speaker.name}
               </h3>
               <p
-                className={`text-[13px] whitespace-pre-line leading-relaxed ${
+                className={`text-sm whitespace-pre-line leading-relaxed ${
                   speaker.isPlaceholder ? "text-white/20" : "text-cream/50"
                 }`}
               >

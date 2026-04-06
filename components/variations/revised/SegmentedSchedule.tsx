@@ -55,7 +55,7 @@ export default function SegmentedSchedule() {
             <button
               key={tab}
               onClick={() => handleTabChange(i)}
-              className={`relative flex-1 py-2.5 px-3 rounded-full text-[13px] font-hook font-medium transition-colors duration-200 z-10 cursor-pointer ${
+              className={`relative flex-1 py-3 px-4 rounded-full text-sm font-hook font-medium transition-colors duration-200 z-10 cursor-pointer ${
                 activeTab === i ? "text-navy" : "text-navy/50 hover:text-navy/80"
               }`}
             >
@@ -106,7 +106,7 @@ export default function SegmentedSchedule() {
                         />
 
                         {/* Time */}
-                        <span className="text-[13px] text-navy/40 font-mono w-[100px] shrink-0 pt-0.5">
+                        <span className="text-sm text-navy/40 font-mono w-[110px] shrink-0 pt-0.5">
                           {item.time}
                         </span>
 
@@ -120,7 +120,7 @@ export default function SegmentedSchedule() {
                               />
                             )}
                             <span
-                              className={`text-[15px] font-medium ${
+                              className={`text-base font-medium ${
                                 item.isBreak ? "text-navy/40 italic" : "text-navy"
                               }`}
                             >
@@ -137,7 +137,7 @@ export default function SegmentedSchedule() {
                             )}
                           </div>
                           {item.desc && (
-                            <p className="text-[13px] text-navy/50 mt-1">
+                            <p className="text-sm text-navy/50 mt-1">
                               {item.desc}
                             </p>
                           )}

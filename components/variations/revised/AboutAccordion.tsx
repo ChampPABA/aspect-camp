@@ -92,7 +92,7 @@ export default function AboutAccordion() {
                     className="w-full flex items-center gap-3 px-5 py-4 text-left cursor-pointer hover:bg-navy/3 transition-colors"
                   >
                     <Icon size={20} className="text-gold shrink-0" />
-                    <span className="flex-1 font-medium text-navy text-[15px]">
+                    <span className="flex-1 font-medium text-navy text-base">
                       {item.title}
                     </span>
                     <motion.div
@@ -112,7 +112,7 @@ export default function AboutAccordion() {
                         transition={{ duration: 0.25, ease: "easeInOut" }}
                         className="overflow-hidden"
                       >
-                        <p className="px-5 pb-4 text-[14px] text-gray-text leading-relaxed whitespace-pre-line">
+                        <p className="px-5 pb-4 text-base text-gray-text leading-relaxed whitespace-pre-line">
                           {item.desc}
                         </p>
                       </motion.div>

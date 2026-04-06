@@ -82,7 +82,7 @@ export default function GradientHero() {
 
         <motion.p
           variants={fadeUp}
-          className="text-cream/60 text-base sm:text-lg max-w-2xl mb-10"
+          className="text-cream/60 text-lg sm:text-xl max-w-2xl mb-10 leading-relaxed"
         >
           ค่าย Healthcare Innovation สำหรับนักเรียน ม.4-6 ที่รู้ว่าชอบวิทยาศาสตร์
           — แต่ยังไม่แน่ใจว่าแพทย์ใช่ไหม
@@ -98,8 +98,8 @@ export default function GradientHero() {
                 variants={fadeUp}
                 className="flex items-start gap-3 text-cream/80"
               >
-                <Icon size={20} className="text-gold mt-0.5 shrink-0" />
-                <span className="text-[15px]">{text}</span>
+                <Icon size={22} className="text-gold mt-0.5 shrink-0" />
+                <span className="text-base sm:text-lg">{text}</span>
               </motion.li>
             );
           })}
@@ -114,7 +114,7 @@ export default function GradientHero() {
           </MagneticWrapper>
           <a
             href="#about"
-            className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-[15px] font-medium text-white border border-white/30 hover:bg-white/8 hover:border-white/60 transition-all duration-200"
+            className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-base font-medium text-white border border-white/30 hover:bg-white/8 hover:border-white/60 transition-colors duration-200 focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-navy-deep"
           >
             ดูรายละเอียด
           </a>
@@ -136,7 +136,7 @@ export default function GradientHero() {
             <motion.div
               key={i}
               variants={fadeUp}
-              className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl px-5 py-4 text-center"
+              className="bg-white/8 backdrop-blur-md border border-white/12 rounded-2xl px-6 py-5 text-center"
             >
               <div className="text-3xl font-heading text-gold mb-1">
 {"isText" in stat ? (
@@ -148,7 +148,7 @@ export default function GradientHero() {
                   />
                 )}
               </div>
-              <div className="text-cream/50 text-[13px]">{stat.label}</div>
+              <div className="text-cream/50 text-sm">{stat.label}</div>
             </motion.div>
           ))}
         </motion.div>

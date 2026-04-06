@@ -80,11 +80,11 @@ export default function TrustBarCredentials() {
             return (
               <motion.div
                 key={i}
-                className="rounded-[20px] p-7 flex flex-col gap-4 cursor-default"
+                className="rounded-2xl p-8 flex flex-col gap-5 cursor-default"
                 style={{
-                  background: "rgba(255,255,255,0.08)",
-                  backdropFilter: "blur(12px)",
-                  border: "1px solid rgba(255,255,255,0.15)",
+                  background: "rgba(255,255,255,0.10)",
+                  backdropFilter: "blur(16px)",
+                  border: "1px solid rgba(255,255,255,0.18)",
                 }}
                 whileHover={{
                   scale: 1.02,
@@ -106,10 +106,10 @@ export default function TrustBarCredentials() {
 
                 {/* Content */}
                 <div className="flex-1">
-                  <h3 className="font-sans text-[16px] font-semibold text-cream mt-1 mb-1">
+                  <h3 className="font-sans text-lg font-semibold text-cream mt-1 mb-1">
                     {cred.name}
                   </h3>
-                  <p className="text-[13px] text-white/50">{cred.org}</p>
+                  <p className="text-sm text-white/50">{cred.org}</p>
                 </div>
 
                 {/* Tag */}

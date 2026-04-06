@@ -62,7 +62,7 @@ export default function GridFaq() {
                 setQuery(e.target.value);
                 setOpenIndex(null);
               }}
-              className="w-full pl-11 pr-4 py-3 rounded-full bg-white/5 border border-white/10 text-cream text-[14px] placeholder:text-white/25 focus:outline-none focus:border-gold/40 transition-colors"
+              className="w-full pl-11 pr-4 py-3.5 rounded-full bg-white/5 border border-white/10 text-cream text-base placeholder:text-white/25 focus:outline-none focus:border-gold/40 focus:ring-1 focus:ring-gold/20 transition-colors"
             />
           </div>
         </motion.div>
@@ -91,7 +91,7 @@ export default function GridFaq() {
                   className="w-full flex items-start gap-3 px-5 py-4 text-left cursor-pointer hover:bg-white/3 transition-colors"
                 >
                   <HelpCircle size={18} className="text-gold mt-0.5 shrink-0" />
-                  <span className="flex-1 text-cream/80 text-[14px] font-medium leading-snug">
+                  <span className="flex-1 text-cream/80 text-base font-medium leading-snug">
                     {item.q}
                   </span>
                   <motion.div
@@ -112,7 +112,7 @@ export default function GridFaq() {
                       transition={{ duration: 0.25, ease: "easeInOut" }}
                       className="overflow-hidden"
                     >
-                      <p className="px-5 pb-4 pl-11 text-[13px] text-cream/50 leading-relaxed">
+                      <p className="px-5 pb-4 pl-11 text-sm text-cream/50 leading-relaxed">
                         {item.a}
                       </p>
                     </motion.div>

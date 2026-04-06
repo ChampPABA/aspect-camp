@@ -106,7 +106,7 @@ export default function PremiumPricing() {
             return (
               <motion.div
                 key={i}
-                className={`relative rounded-[20px] p-6 flex flex-col ${
+                className={`relative rounded-2xl p-7 flex flex-col ${
                   isEarlyBird ? "ring-2 ring-gold/50 scale-[1.02]" : ""
                 }`}
                 style={{
@@ -130,10 +130,10 @@ export default function PremiumPricing() {
                 )}
 
                 {/* Tier name */}
-                <h3 className="font-hook text-[15px] text-cream mb-2">{tier.tier}</h3>
+                <h3 className="font-hook text-base text-cream mb-2">{tier.tier}</h3>
 
                 {/* Condition */}
-                <p className="text-[12px] text-cream/40 mb-4 leading-relaxed">
+                <p className="text-sm text-cream/40 mb-4 leading-relaxed">
                   {tier.condition}
                 </p>
 
@@ -152,7 +152,7 @@ export default function PremiumPricing() {
                 {/* Benefits */}
                 <ul className="space-y-2 mb-6 flex-1">
                   {tier.benefits.map((b, j) => (
-                    <li key={j} className="flex items-center gap-2 text-[13px] text-cream/70">
+                    <li key={j} className="flex items-center gap-2 text-sm text-cream/70">
                       <Check size={14} className="text-gold shrink-0" />
                       {b}
                     </li>
