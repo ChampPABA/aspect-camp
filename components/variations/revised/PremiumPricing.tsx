@@ -50,7 +50,7 @@ export default function PremiumPricing() {
       <div className="max-w-[var(--container-max)] mx-auto">
         {/* Heading */}
         <motion.p
-          className="text-gold text-[12px] tracking-[0.25em] uppercase text-center mb-4 font-hook"
+          className="text-gold text-[12px] tracking-[0.25em] uppercase text-center mb-4 font-sans font-semibold"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true, amount: 0 }}
@@ -59,7 +59,7 @@ export default function PremiumPricing() {
         </motion.p>
 
         <motion.h2
-          className="font-heading text-3xl md:text-5xl text-cream text-center mb-4 leading-tight"
+          className="font-sans font-bold text-3xl md:text-5xl text-cream text-center mb-4 leading-tight"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0 }}

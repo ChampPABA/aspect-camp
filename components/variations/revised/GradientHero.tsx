@@ -65,7 +65,7 @@ export default function GradientHero() {
         {/* Headline */}
         <motion.h1
           variants={fadeUp}
-          className="font-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-cream leading-[1.15] mb-4 max-w-4xl"
+          className="font-sans text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-cream leading-[1.15] mb-4 max-w-4xl font-bold"
         >
           <TypewriterText
             text="ไม่แน่ใจว่าอยากเป็นหมอ?"
@@ -75,7 +75,7 @@ export default function GradientHero() {
 
         <motion.p
           variants={fadeUp}
-          className="font-heading text-2xl sm:text-3xl md:text-4xl text-gold leading-tight mb-3"
+          className="font-sans text-2xl sm:text-3xl md:text-4xl text-gold leading-tight mb-3 font-semibold"
         >
           3 วันนี้จะตอบคำถามนั้น
         </motion.p>

@@ -13,7 +13,7 @@ export default function GlassSpeakers() {
       <div className="max-w-[var(--container-max)] mx-auto">
         {/* Heading */}
         <motion.p
-          className="text-gold text-[12px] tracking-[0.25em] uppercase text-center mb-4 font-hook"
+          className="text-gold text-[12px] tracking-[0.25em] uppercase text-center mb-4 font-sans font-semibold"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true, amount: 0 }}
@@ -22,7 +22,7 @@ export default function GlassSpeakers() {
         </motion.p>
 
         <motion.h2
-          className="font-heading text-3xl md:text-5xl text-cream text-center mb-12 leading-tight"
+          className="font-sans font-bold text-3xl md:text-5xl text-cream text-center mb-12 leading-tight"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0 }}
@@ -58,7 +58,7 @@ export default function GlassSpeakers() {
                 <div className="inline-block px-3 py-0.5 rounded-full bg-gold/15 text-gold text-[11px] font-semibold tracking-wide mb-2">
                   FEATURED
                 </div>
-                <h3 className="font-heading text-xl text-cream font-semibold mb-1">
+                <h3 className="font-sans text-xl text-cream font-semibold mb-1">
                   {featured.name}
                 </h3>
                 <p className="text-cream/50 text-[14px] whitespace-pre-line leading-relaxed">
@@ -109,7 +109,7 @@ export default function GlassSpeakers() {
               </div>
 
               <h3
-                className={`font-heading text-[16px] font-semibold mb-1 ${
+                className={`font-sans text-[16px] font-semibold mb-1 ${
                   speaker.isPlaceholder ? "text-cream/40" : "text-cream"
                 }`}
               >
