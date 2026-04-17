@@ -277,8 +277,11 @@ export const PRICING_TIERS: PricingTier[] = [
   },
 ];
 
-export const PRICING_NOTE =
-  "สมัครคู่กับเพื่อน **ลดเพิ่มอีก 300 บาท/คน** · ราคารวมที่พัก อาหาร วัสดุ workshop และ Credentials ทั้งหมด";
+export const PRICING_NOTE = {
+  prefix: "สมัครคู่กับเพื่อน ",
+  bold: "ลดเพิ่มอีก 300 บาท/คน",
+  suffix: " · ราคารวมที่พัก อาหาร วัสดุ workshop และ Credentials ทั้งหมด",
+};
 
 export const FAQ_ITEMS = [
   {

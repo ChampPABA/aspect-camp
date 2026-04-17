@@ -31,6 +31,7 @@ export default function HeroCinematic() {
   const lastFrameRef = useRef(-1);
   const rafRef = useRef(0);
   const inViewRef = useRef(true);
+  const dprRef = useRef(1);
 
   // Refs for slide elements to mutate opacity/transform without state-triggered renders
   const labelRef = useRef<HTMLDivElement>(null);
@@ -53,8 +54,11 @@ export default function HeroCinematic() {
 
   // Preload frames (eager 1–10, lazy rest)
   useEffect(() => {
+    // Eager: first 10 frames for LCP. Rest: chunk-loaded to avoid saturating HTTP/2.
     const frames: HTMLImageElement[] = [];
     const eagerCount = 10;
+    const chunkSize = 8;
+    let cancelled = false;
 
     const loadOne = (i: number) => {
       const img = new Image();
@@ -64,18 +68,24 @@ export default function HeroCinematic() {
     };
 
     for (let i = 0; i < eagerCount && i < HERO_FRAME_COUNT; i++) loadOne(i);
+    framesRef.current = frames;
 
     const idle =
       (window as unknown as {
         requestIdleCallback?: (cb: () => void) => number;
       }).requestIdleCallback ?? ((cb: () => void) => window.setTimeout(cb, 200));
 
-    idle(() => {
-      for (let i = eagerCount; i < HERO_FRAME_COUNT; i++) loadOne(i);
-    });
+    const loadChunk = (start: number) => {
+      if (cancelled || start >= HERO_FRAME_COUNT) return;
+      const end = Math.min(start + chunkSize, HERO_FRAME_COUNT);
+      for (let i = start; i < end; i++) loadOne(i);
+      idle(() => loadChunk(end));
+    };
+    idle(() => loadChunk(eagerCount));
 
-    framesRef.current = frames;
     return () => {
+      cancelled = true;
+      // Drop references so GC can reclaim; in-flight loads will resolve and be discarded.
       framesRef.current = [];
     };
   }, []);
@@ -89,12 +99,13 @@ export default function HeroCinematic() {
 
     const resize = () => {
       const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      dprRef.current = dpr;
       canvas.width = window.innerWidth * dpr;
       canvas.height = window.innerHeight * dpr;
       canvas.style.width = "100%";
       canvas.style.height = "100%";
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      lastFrameRef.current = -1; // force redraw
+      lastFrameRef.current = -1;
     };
     resize();
     window.addEventListener("resize", resize);
@@ -108,6 +119,8 @@ export default function HeroCinematic() {
     const obs = new IntersectionObserver(
       ([entry]) => {
         inViewRef.current = entry.isIntersecting;
+        // Force a re-draw on re-entry so the current frame isn't skipped by the dedupe guard.
+        if (entry.isIntersecting) lastFrameRef.current = -1;
       },
       { rootMargin: "0px" }
     );
@@ -187,7 +200,7 @@ export default function HeroCinematic() {
     if (lastFrameRef.current === bounded) return;
     lastFrameRef.current = bounded;
 
-    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    const dpr = dprRef.current;
     const cw = canvas.width / dpr;
     const ch = canvas.height / dpr;
     const iw = img.naturalWidth;
@@ -195,7 +208,7 @@ export default function HeroCinematic() {
     const scale = Math.max(cw / iw, ch / ih);
     const dw = iw * scale;
     const dh = ih * scale;
-    ctx.clearRect(0, 0, cw, ch);
+    // drawImage with cover-scale fills the canvas — no clearRect needed.
     ctx.drawImage(img, (cw - dw) / 2, (ch - dh) / 2, dw, dh);
   }
 

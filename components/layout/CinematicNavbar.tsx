@@ -4,6 +4,20 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { LINE_URL, LOGO_SRC, NAV_LINKS } from "@/lib/constants";
 
+function CtaButton({
+  className = "",
+  onClick,
+}: {
+  className?: string;
+  onClick?: () => void;
+}) {
+  return (
+    <a href={LINE_URL} onClick={onClick} className={`shine-btn ${className}`}>
+      สมัครเข้าร่วมค่าย →
+    </a>
+  );
+}
+
 export default function CinematicNavbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -27,6 +41,7 @@ export default function CinematicNavbar() {
           width={140}
           height={32}
           priority
+          sizes="140px"
           className="h-8 w-auto object-contain"
         />
       </a>
@@ -45,13 +60,12 @@ export default function CinematicNavbar() {
       </div>
 
       <div className="flex items-center gap-3">
-        <a href={LINE_URL} className="shine-btn hidden md:inline-flex">
-          สมัครเข้าร่วมค่าย →
-        </a>
+        <CtaButton className="hidden md:inline-flex" />
         <button
           type="button"
           aria-label="Toggle menu"
           aria-expanded={menuOpen}
+          aria-controls="mobile-menu"
           className="md:hidden bg-transparent border-none text-white cursor-pointer p-1"
           onClick={() => setMenuOpen((v) => !v)}
         >
@@ -62,7 +76,10 @@ export default function CinematicNavbar() {
       </div>
 
       {menuOpen && (
-        <div className="absolute top-full left-0 right-0 bg-navy border-t border-white/10 px-[5%] py-5 md:hidden">
+        <div
+          id="mobile-menu"
+          className="absolute top-full left-0 right-0 bg-navy border-t border-white/10 px-[5%] py-5 md:hidden"
+        >
           {NAV_LINKS.map((link) => (
             <a
               key={link.href}
@@ -73,13 +90,10 @@ export default function CinematicNavbar() {
               {link.label}
             </a>
           ))}
-          <a
-            href={LINE_URL}
+          <CtaButton
+            className="mt-3 block text-center"
             onClick={() => setMenuOpen(false)}
-            className="shine-btn mt-3 block text-center"
-          >
-            สมัครเข้าร่วมค่าย →
-          </a>
+          />
         </div>
       )}
     </nav>

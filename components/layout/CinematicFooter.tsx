@@ -10,6 +10,7 @@ export default function CinematicFooter() {
           alt="Aspect"
           width={100}
           height={22}
+          sizes="100px"
           className="h-[22px] w-auto object-contain opacity-35"
         />
         <div className="flex gap-5">

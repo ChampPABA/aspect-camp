@@ -9,16 +9,21 @@ export default function Partners() {
           พาร์ตเนอร์ร่วมมือทางวิชาการ
         </div>
         <div className="flex items-center justify-center gap-10 sm:gap-14 flex-wrap">
-          {PARTNERS.map((p) => (
-            <Image
-              key={p.alt}
-              src={p.src}
-              alt={p.alt}
-              width={200}
-              height={p.isSvg ? 52 : 56}
-              className={`${p.isSvg ? "h-[52px]" : "h-[56px]"} w-auto object-contain opacity-85 transition hover:opacity-100 hover:scale-105`}
-            />
-          ))}
+          {PARTNERS.map((p) => {
+            const h = p.isSvg ? 52 : 56;
+            return (
+              <Image
+                key={p.alt}
+                src={p.src}
+                alt={p.alt}
+                width={200}
+                height={h}
+                sizes="200px"
+                style={{ height: h }}
+                className="w-auto object-contain opacity-85 transition hover:opacity-100 hover:scale-105"
+              />
+            );
+          })}
         </div>
       </div>
     </div>

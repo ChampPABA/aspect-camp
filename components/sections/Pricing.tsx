@@ -8,8 +8,6 @@ const ctaClass: Record<"navy" | "outline" | "gold", string> = {
 };
 
 export default function Pricing() {
-  const [bold, rest] = PRICING_NOTE.split(/\*\*(.+?)\*\*/);
-
   return (
     <section
       id="pricing"
@@ -77,9 +75,9 @@ export default function Pricing() {
         ))}
       </div>
       <div className="text-center mt-7 text-[15px] text-navy-deep/50">
-        {bold}
-        <strong className="text-navy-deep">{rest}</strong>
-        {PRICING_NOTE.split("**").slice(2).join("**")}
+        {PRICING_NOTE.prefix}
+        <strong className="text-navy-deep">{PRICING_NOTE.bold}</strong>
+        {PRICING_NOTE.suffix}
       </div>
     </section>
   );

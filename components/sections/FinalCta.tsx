@@ -7,10 +7,7 @@ import {
 
 export default function FinalCta() {
   return (
-    <section
-      className="relative text-center bg-navy-deep px-[5%]"
-      style={{ padding: "140px 5%" }}
-    >
+    <section className="relative text-center bg-navy-deep py-[140px] px-[5%]">
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
