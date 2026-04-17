@@ -8,3 +8,7 @@ materials/
 docs/
 screenshots/
 test-scroll-hero.mjs
+.vercel
+.env
+.env.*
+.claude/
