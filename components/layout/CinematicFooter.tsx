@@ -5,14 +5,15 @@ export default function CinematicFooter() {
   return (
     <footer className="bg-navy-deep px-[5%] py-10 border-t border-white/6">
       <div className="max-w-[1100px] mx-auto flex items-center justify-between flex-wrap gap-4">
-        <Image
-          src={LOGO_SRC}
-          alt="Aspect"
-          width={100}
-          height={22}
-          sizes="100px"
-          className="h-[22px] w-auto object-contain opacity-35"
-        />
+        <div className="relative h-[22px] w-[72px] opacity-35">
+          <Image
+            src={LOGO_SRC}
+            alt="Aspect"
+            fill
+            sizes="72px"
+            className="object-contain object-left"
+          />
+        </div>
         <div className="flex gap-5">
           <a
             href={LINE_URL}

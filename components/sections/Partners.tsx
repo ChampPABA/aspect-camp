@@ -12,16 +12,19 @@ export default function Partners() {
           {PARTNERS.map((p) => {
             const h = p.isSvg ? 52 : 56;
             return (
-              <Image
+              <div
                 key={p.alt}
-                src={p.src}
-                alt={p.alt}
-                width={200}
-                height={h}
-                sizes="200px"
+                className="relative w-[200px] transition-[opacity,transform] hover:opacity-100 hover:scale-105 opacity-85"
                 style={{ height: h }}
-                className="w-auto object-contain opacity-85 transition hover:opacity-100 hover:scale-105"
-              />
+              >
+                <Image
+                  src={p.src}
+                  alt={p.alt}
+                  fill
+                  sizes="200px"
+                  className="object-contain"
+                />
+              </div>
             );
           })}
         </div>

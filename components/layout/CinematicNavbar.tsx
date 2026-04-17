@@ -35,15 +35,16 @@ export default function CinematicNavbar() {
       style={{ height: scrolled ? 56 : 64 }}
     >
       <a href="#" className="flex items-center">
-        <Image
-          src={LOGO_SRC}
-          alt="Aspect"
-          width={140}
-          height={32}
-          priority
-          sizes="140px"
-          className="h-8 w-auto object-contain"
-        />
+        <div className="relative h-8 w-[110px]">
+          <Image
+            src={LOGO_SRC}
+            alt="Aspect"
+            fill
+            priority
+            sizes="110px"
+            className="object-contain object-left"
+          />
+        </div>
       </a>
 
       <div className="hidden md:flex gap-7">
