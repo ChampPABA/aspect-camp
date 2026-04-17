@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hero A — Award Ceremony</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy-deep: #050D1A; --cream: #F1F1E8; --gold: #D4B978;
+    --gold-from: #c3a456; --gold-to: #f0cb46; --red: #e85d5d;
+    --font-sans: "IBM Plex Sans Thai", "Sarabun", sans-serif;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: auto; }
+  body { background: var(--navy-deep); color: var(--cream); font-family: var(--font-sans); overflow-x: hidden; }
+
+  /* Nav */
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 200; height: 64px; padding: 0 5%; display: flex; justify-content: space-between; align-items: center; background: rgba(5,13,26,0.85); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,0.08); transition: opacity 0.4s; }
+  .nav-brand { font-size: 18px; font-weight: 700; color: var(--gold); letter-spacing: 0.06em; }
+  .nav-label { font-size: 12px; color: rgba(255,255,255,0.3); margin-left: 8px; }
+  .nav-links { display: flex; gap: 28px; }
+  .nav-links a { color: rgba(255,255,255,0.65); text-decoration: none; font-size: 14px; }
+  .nav-cta { padding: 9px 22px; background: linear-gradient(135deg, var(--gold-from), var(--gold-to)); border-radius: 100px; color: var(--navy-deep); font-size: 13px; font-weight: 700; text-decoration: none; }
+
+  /* Hero */
+  .hero { height: 500vh; position: relative; }
+  .hero-pin { position: sticky; top: 0; height: 100vh; overflow: hidden; }
+  #hero-canvas { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .hero-dim { position: absolute; inset: 0; background: rgba(5,13,26,0.45); pointer-events: none; }
+
+  /* Text layers — all absolute, centered */
+  .text-layer { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; pointer-events: none; padding: 0 24px; }
+
+  /* Slide 1: Label + H1 + sub */
+  #slide-intro { text-align: center; flex-direction: column; gap: 0; }
+  .s-label { font-size: 14px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 26px; display: flex; align-items: center; justify-content: center; gap: 12px; }
+  .s-label::before, .s-label::after { content: ''; width: 32px; height: 1px; background: var(--gold); opacity: 0.5; }
+  .s-h1 { font-size: clamp(56px, 9vw, 96px); font-weight: 800; line-height: 1; letter-spacing: -0.02em; }
+  .s-h1 .l1 { display: block; }
+  .s-h1 .l2 { display: block; color: var(--red); }
+  .s-h1 .l3 { display: block; }
+  .s-sub { margin-top: 24px; font-size: 22px; color: rgba(241,241,232,0.7); line-height: 1.65; max-width: 44ch; }
+
+  /* Slide 2: Stats */
+  #slide-stats { flex-direction: column; text-align: center; }
+  .stats-row { display: flex; gap: 60px; justify-content: center; flex-wrap: wrap; }
+  .stat-box { text-align: center; }
+  .stat-num { font-size: clamp(56px, 9vw, 80px); font-weight: 800; color: var(--gold); line-height: 1; }
+  .stat-label { font-size: 16px; color: rgba(241,241,232,0.55); letter-spacing: 0.12em; text-transform: uppercase; margin-top: 10px; }
+  .stats-sub { margin-top: 32px; font-size: 20px; color: rgba(241,241,232,0.45); letter-spacing: 0.06em; }
+
+  /* Slide 3: Benefits */
+  #slide-benefits { flex-direction: column; text-align: center; max-width: 680px; margin: 0 auto; }
+  #slide-benefits h2 { font-size: clamp(30px, 4vw, 46px); font-weight: 700; margin-bottom: 32px; }
+  .benefit-list { list-style: none; text-align: left; width: 100%; }
+  .benefit-list li { font-size: 21px; padding: 18px 0; border-bottom: 1px solid rgba(255,255,255,0.07); display: flex; gap: 16px; align-items: flex-start; color: rgba(241,241,232,0.85); line-height: 1.6; }
+  .benefit-list li::before { content: '—'; color: var(--gold); flex-shrink: 0; font-weight: 700; }
+
+  /* Slide 4: CTA */
+  #slide-cta { flex-direction: column; text-align: center; }
+  #slide-cta .cta-date { font-size: 18px; color: var(--gold); letter-spacing: 0.08em; margin-bottom: 22px; }
+  #slide-cta h2 { font-size: clamp(36px, 5.5vw, 58px); font-weight: 800; line-height: 1.1; margin-bottom: 36px; }
+  .cta-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+  .btn-main { padding: 18px 48px; background: linear-gradient(135deg, var(--gold-from), var(--gold-to)); border-radius: 100px; color: var(--navy-deep); font-size: 18px; font-weight: 700; text-decoration: none; pointer-events: all; position: relative; overflow: hidden; }
+  .btn-main::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg,transparent,rgba(255,255,255,0.25),transparent); transform: translateX(-100%); transition: transform 0.6s; }
+  .btn-main:hover::after { transform: translateX(100%); }
+  .btn-outline { padding: 17px 40px; border: 1px solid rgba(212,185,120,0.4); border-radius: 100px; color: var(--gold); font-size: 17px; text-decoration: none; pointer-events: all; }
+
+  /* Scroll cue */
+  .scroll-cue { position: absolute; bottom: 28px; left: 50%; transform: translateX(-50%); z-index: 10; text-align: center; pointer-events: none; }
+  .scroll-cue span { font-size: 10px; color: rgba(255,255,255,0.3); letter-spacing: 0.2em; text-transform: uppercase; }
+  .scroll-line { width: 1px; height: 32px; background: linear-gradient(to bottom, var(--gold), transparent); margin: 6px auto 0; animation: sl 2s ease-in-out infinite; }
+  @keyframes sl { 0%,100%{opacity:0.3;transform:scaleY(0.6)} 50%{opacity:1;transform:scaleY(1)} }
+
+  .concept-tag { position: fixed; top: 80px; right: 20px; background: rgba(212,185,120,0.12); border: 1px solid rgba(212,185,120,0.35); border-radius: 8px; padding: 7px 13px; font-size: 11px; color: var(--gold); letter-spacing: 0.1em; z-index: 300; }
+</style>
+</head>
+<body>
+
+<nav>
+  <div style="display:flex;align-items:center">
+    <span class="nav-brand">ASPECT</span>
+    <span class="nav-label">Med Camp</span>
+  </div>
+  <div class="nav-links">
+    <a href="#">ทำไมต้องค่ายนี้</a>
+    <a href="#">ตาราง</a>
+    <a href="#">ราคา</a>
+    <a href="#">FAQ</a>
+  </div>
+  <a href="https://lin.ee/AspectCareer" class="nav-cta">สมัคร →</a>
+</nav>
+
+<div class="concept-tag">Hero A — Award</div>
+
+<section class="hero" id="hero">
+  <div class="hero-pin" id="heroPin">
+    <canvas id="hero-canvas"></canvas>
+    <div class="hero-dim"></div>
+
+    <!-- Slide 1: Identity -->
+    <div class="text-layer" id="slide-intro" style="flex-direction:column">
+      <div class="s-label" id="s-label">Aspect Med Camp · 1–3 พฤษภาคม 2568</div>
+      <h1 class="s-h1" id="s-h1">
+        <span class="l1">ทุกจังหวะ</span>
+        <span class="l2">หัวใจ</span>
+        <span class="l3">มีเรื่องเล่า</span>
+      </h1>
+      <p class="s-sub" id="s-sub">จากนักเรียนที่ยังไม่แน่ใจ สู่ผู้สร้าง Healthcare Innovation — ด้วยมือของน้องเอง</p>
+    </div>
+
+    <!-- Slide 2: Stats -->
+    <div class="text-layer" id="slide-stats" style="flex-direction:column">
+      <div class="stats-row">
+        <div class="stat-box"><div class="stat-num" id="sn1">3</div><div class="stat-label">วันเต็ม</div></div>
+        <div class="stat-box"><div class="stat-num" id="sn2">60</div><div class="stat-label">ที่นั่งจำกัด</div></div>
+        <div class="stat-box"><div class="stat-num" id="sn3">3</div><div class="stat-label">ทุนการศึกษา</div></div>
+      </div>
+      <p class="stats-sub">สำหรับนักเรียน ม.4 – ม.6 ที่สนใจเส้นทางแพทย์</p>
+    </div>
+
+    <!-- Slide 3: Benefits -->
+    <div class="text-layer" id="slide-benefits" style="flex-direction:column;max-width:680px;margin:0 auto">
+      <h2>3 วันนี้จะได้อะไร</h2>
+      <ul class="benefit-list">
+        <li>เลิก "เดาสุ่ม" ว่าอยากเดินเส้นทางแพทย์หรือเปล่า</li>
+        <li>สร้าง Healthcare Innovation จริง ตัดสินโดยหมอจริง</li>
+        <li>MicroCredential KMUTT + Certificate SET ใส่ portfolio TCAS ได้ทันที</li>
+      </ul>
+    </div>
+
+    <!-- Slide 4: CTA -->
+    <div class="text-layer" id="slide-cta" style="flex-direction:column">
+      <div class="cta-date">เชียงใหม่ · 1–3 พฤษภาคม 2568</div>
+      <h2>พร้อมก้าวแรก<br>สู่เส้นทางแพทย์?</h2>
+      <div class="cta-btns">
+        <a href="https://lin.ee/AspectCareer" class="btn-main">สมัครเข้าร่วมค่าย →</a>
+        <a href="#" class="btn-outline">ดูตารางกิจกรรม</a>
+      </div>
+    </div>
+
+    <!-- Scroll cue -->
+    <div class="scroll-cue" id="scrollCue">
+      <span>Scroll</span>
+      <div class="scroll-line"></div>
+    </div>
+  </div>
+</section>
+
+<script>
+const TOTAL = 91;
+const canvas = document.getElementById('hero-canvas');
+const ctx = canvas.getContext('2d');
+const hero = document.getElementById('hero');
+
+// Canvas size
+function resizeCanvas() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+resizeCanvas();
+window.addEventListener('resize', resizeCanvas);
+
+// Preload frames
+const frames = [];
+let loadedCount = 0;
+for (let i = 1; i <= TOTAL; i++) {
+  const img = new Image();
+  img.src = `frames-a/frame_${String(i).padStart(3,'0')}.webp`;
+  img.onload = () => { loadedCount++; if (loadedCount === 1) drawFrame(0); };
+  frames.push(img);
+}
+
+function drawFrame(idx) {
+  const img = frames[Math.min(idx, TOTAL-1)];
+  if (!img.complete || !img.naturalWidth) return;
+  const iw = img.naturalWidth, ih = img.naturalHeight;
+  const cw = canvas.width, ch = canvas.height;
+  const scale = Math.max(cw/iw, ch/ih);
+  const dw = iw*scale, dh = ih*scale;
+  ctx.drawImage(img, (cw-dw)/2, (ch-dh)/2, dw, dh);
+}
+
+// Helpers
+function clamp(v,a,b){return Math.max(a,Math.min(b,v));}
+function fi(p,start,dur){return clamp((p-start)/dur,0,1);}
+function fo(p,start,dur){return clamp(1-(p-start)/dur,0,1);}
+function fw(p,is,id,os,od){return Math.min(fi(p,is,id),fo(p,os,od));}
+function lerp(a,b,t){return a+(b-a)*clamp(t,0,1);}
+
+// Elements
+const elLabel = document.getElementById('s-label');
+const elH1 = document.getElementById('s-h1');
+const elSub = document.getElementById('s-sub');
+const elStats = document.getElementById('slide-stats');
+const elBenefits = document.getElementById('slide-benefits');
+const elCta = document.getElementById('slide-cta');
+const elScrollCue = document.getElementById('scrollCue');
+
+function update() {
+  const scrolled = window.scrollY;
+  const maxScroll = hero.offsetHeight - window.innerHeight;
+  const p = clamp(scrolled / maxScroll, 0, 1);
+
+  // Canvas frame
+  drawFrame(Math.floor(p * (TOTAL - 1)));
+
+  // Slide 1: 0 → 0.32
+  const s1 = fw(p, 0.02, 0.08, 0.26, 0.07);
+  const s1y = lerp(32, 0, fi(p, 0.02, 0.12));
+  elLabel.style.opacity = s1;
+  elLabel.style.transform = `translateY(${lerp(20,0,fi(p,0.02,0.1))}px)`;
+  elH1.style.opacity = s1;
+  elH1.style.transform = `translateY(${s1y}px)`;
+  elSub.style.opacity = s1;
+  elSub.style.transform = `translateY(${lerp(20,0,fi(p,0.06,0.1))}px)`;
+
+  // Slide 2: 0.30 → 0.65 (longer window)
+  const s2 = fw(p, 0.30, 0.08, 0.58, 0.07);
+  elStats.style.opacity = s2;
+  elStats.style.transform = `translateY(${lerp(28,0,fi(p,0.30,0.1))}px)`;
+
+  // Slide 3: 0.64 → 0.84
+  const s3 = fw(p, 0.63, 0.08, 0.80, 0.06);
+  elBenefits.style.opacity = s3;
+  elBenefits.style.transform = `translateY(${lerp(28,0,fi(p,0.63,0.1))}px)`;
+
+  // Slide 4 CTA: 0.82 → 1.0
+  const s4 = fw(p, 0.82, 0.09, 0.97, 0.03);
+  elCta.style.opacity = s4;
+  elCta.style.pointerEvents = s4 > 0.5 ? 'all' : 'none';
+  elCta.style.transform = `translateY(${lerp(28,0,fi(p,0.78,0.1))}px)`;
+
+  // Scroll cue fades out when start scrolling
+  elScrollCue.style.opacity = fo(p, 0.04, 0.06);
+}
+
+// Init
+[elLabel, elH1, elSub, elStats, elBenefits, elCta].forEach(el => { el.style.opacity = 0; });
+
+window.addEventListener('scroll', update, { passive: true });
+update();
+</script>
+</body>
+</html>

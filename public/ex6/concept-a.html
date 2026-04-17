@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Concept A — Heartbeat</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=IBM+Plex+Sans+Thai:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0F2A4A; --navy-deep: #050D1A;
+    --cream: #F1F1E8; --gold: #D4B978;
+    --gold-from: #c3a456; --gold-to: #f0cb46;
+    --red: #e85d5d;
+    --font-heading: "Cormorant Garamond", serif;
+    --font-sans: "IBM Plex Sans Thai", sans-serif;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: var(--navy-deep); color: var(--cream); font-family: var(--font-sans); overflow-x: hidden; }
+
+  /* Nav */
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; height: 64px; padding: 0 5%; display: flex; justify-content: space-between; align-items: center; background: rgba(5,13,26,0.85); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,0.08); }
+  .nav-brand { font-family: var(--font-heading); font-size: 22px; font-weight: 600; color: var(--gold); letter-spacing: 0.05em; }
+  .nav-label { font-size: 12px; color: rgba(255,255,255,0.3); margin-left: 8px; }
+  .nav-cta { padding: 9px 22px; background: linear-gradient(135deg, var(--gold-from), var(--gold-to)); border-radius: 100px; color: var(--navy-deep); font-size: 13px; font-weight: 700; text-decoration: none; }
+
+  /* Hero */
+  .hero { position: relative; height: 100vh; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+  .hero-bg { position: absolute; inset: 0; background-image: url('../ex5/images/award-ceremony.webp'); background-size: cover; background-position: center 30%; transform: scale(1.05); transition: transform 8s ease; }
+  .hero-bg.loaded { transform: scale(1); }
+  .hero-dim { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(5,13,26,0.85) 0%, rgba(5,13,26,0.6) 50%, rgba(5,13,26,0.7) 100%); }
+
+  /* EKG line */
+  .ekg-container { position: absolute; top: 50%; left: 0; right: 0; transform: translateY(-60px); z-index: 2; overflow: hidden; }
+  .ekg-svg { width: 100%; height: 80px; display: block; }
+  .ekg-path { fill: none; stroke: var(--gold); stroke-width: 2; opacity: 0.5; stroke-dasharray: 2400; stroke-dashoffset: 2400; }
+  .ekg-glow { fill: none; stroke: var(--gold); stroke-width: 4; opacity: 0; filter: blur(4px); stroke-dasharray: 2400; stroke-dashoffset: 2400; }
+
+  /* Hero content */
+  .hero-content { position: relative; z-index: 3; text-align: center; padding: 0 24px; max-width: 860px; opacity: 0; transform: translateY(20px); transition: opacity 1.2s ease, transform 1.2s ease; }
+  .hero-content.visible { opacity: 1; transform: translateY(0); }
+  .hero-pill { display: inline-flex; align-items: center; gap: 8px; padding: 6px 16px; border-radius: 100px; border: 1px solid rgba(212,185,120,0.4); background: rgba(212,185,120,0.08); margin-bottom: 24px; }
+  .pulse-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--red); animation: pulse 1.5s ease-in-out infinite; }
+  @keyframes pulse { 0%,100% { transform: scale(1); opacity: 0.6; } 50% { transform: scale(1.5); opacity: 1; } }
+  .hero-pill span { font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); }
+  .hero-content h1 { font-family: var(--font-sans); font-size: clamp(52px, 9vw, 96px); font-weight: 700; line-height: 0.95; margin-bottom: 24px; }
+  .hero-content h1 .line1 { display: block; color: var(--cream); }
+  .hero-content h1 .line2 { display: block; color: var(--gold); }
+  .hero-content p { font-size: 18px; color: rgba(241,241,232,0.65); line-height: 1.7; margin-bottom: 36px; max-width: 44ch; margin-left: auto; margin-right: auto; }
+
+  /* Stats pulse row */
+  .stats-row { display: flex; gap: 48px; justify-content: center; flex-wrap: wrap; margin-bottom: 40px; }
+  .stat { text-align: center; opacity: 0; transform: translateY(10px); }
+  .stat.show { opacity: 1; transform: translateY(0); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .stat-num { font-family: var(--font-sans); font-size: 56px; font-weight: 700; color: var(--gold); line-height: 1; }
+  .stat-label { font-size: 12px; color: rgba(241,241,232,0.45); letter-spacing: 0.12em; text-transform: uppercase; margin-top: 4px; }
+
+  .cta-row { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+  .btn-primary { padding: 15px 40px; background: linear-gradient(135deg, var(--gold-from), var(--gold-to)); border-radius: 100px; color: var(--navy-deep); font-size: 16px; font-weight: 700; text-decoration: none; }
+  .btn-ghost { padding: 14px 36px; border: 1px solid rgba(212,185,120,0.4); border-radius: 100px; color: var(--gold); font-size: 15px; text-decoration: none; }
+
+  /* Bottom EKG bar */
+  .ekg-bar { position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, transparent, var(--gold), transparent); opacity: 0; animation: ekg-bar 3s ease-in-out 2.5s forwards; }
+  @keyframes ekg-bar { to { opacity: 0.6; } }
+
+  .concept-badge { position: fixed; top: 80px; right: 20px; background: rgba(212,185,120,0.15); border: 1px solid var(--gold); border-radius: 8px; padding: 8px 14px; font-size: 11px; color: var(--gold); letter-spacing: 0.1em; z-index: 200; }
+</style>
+</head>
+<body>
+
+<nav>
+  <div style="display:flex;align-items:center;">
+    <span class="nav-brand">ASPECT</span>
+    <span class="nav-label">Med Camp</span>
+  </div>
+  <a href="#" class="nav-cta">สมัครเข้าร่วม →</a>
+</nav>
+
+<div class="concept-badge">Concept A — Heartbeat</div>
+
+<section class="hero">
+  <div class="hero-bg" id="heroBg"></div>
+  <div class="hero-dim"></div>
+
+  <!-- EKG line behind content -->
+  <div class="ekg-container">
+    <svg class="ekg-svg" viewBox="0 0 1400 80" preserveAspectRatio="none">
+      <path class="ekg-glow" d="M0,40 L280,40 L310,40 L330,10 L345,68 L360,20 L375,40 L560,40 L590,40 L610,10 L625,68 L640,20 L655,40 L840,40 L870,40 L890,10 L905,68 L920,20 L935,40 L1120,40 L1150,40 L1170,10 L1185,68 L1200,20 L1215,40 L1400,40"/>
+      <path class="ekg-path" id="ekgPath" d="M0,40 L280,40 L310,40 L330,10 L345,68 L360,20 L375,40 L560,40 L590,40 L610,10 L625,68 L640,20 L655,40 L840,40 L870,40 L890,10 L905,68 L920,20 L935,40 L1120,40 L1150,40 L1170,10 L1185,68 L1200,20 L1215,40 L1400,40"/>
+    </svg>
+  </div>
+
+  <div class="hero-content" id="heroContent">
+    <div class="hero-pill">
+      <div class="pulse-dot"></div>
+      <span>Aspect Med Camp · 1–3 พฤษภาคม 2568</span>
+    </div>
+    <h1>
+      <span class="line1">จังหวะนี้</span>
+      <span class="line2">เปลี่ยนชีวิต</span>
+    </h1>
+    <p>Healthcare Innovation Camp สำหรับนักเรียน ม.4–ม.6 ที่พร้อมก้าวแรกสู่เส้นทางแพทย์</p>
+
+    <div class="stats-row">
+      <div class="stat" id="s1"><div class="stat-num">3</div><div class="stat-label">วันเต็ม</div></div>
+      <div class="stat" id="s2"><div class="stat-num">60</div><div class="stat-label">ที่นั่งจำกัด</div></div>
+      <div class="stat" id="s3"><div class="stat-num">3</div><div class="stat-label">ทุนการศึกษา</div></div>
+    </div>
+
+    <div class="cta-row">
+      <a href="#" class="btn-primary">สมัครเข้าร่วมค่าย →</a>
+      <a href="#" class="btn-ghost">ดูรายละเอียด</a>
+    </div>
+  </div>
+
+  <div class="ekg-bar"></div>
+</section>
+
+<script>
+  const bg = document.getElementById('heroBg');
+  setTimeout(() => bg.classList.add('loaded'), 100);
+
+  const ekgPath = document.getElementById('ekgPath');
+  const ekgGlow = document.querySelector('.ekg-glow');
+  const content = document.getElementById('heroContent');
+  const stats = [document.getElementById('s1'), document.getElementById('s2'), document.getElementById('s3')];
+
+  // Animate EKG draw
+  ekgPath.style.transition = 'stroke-dashoffset 1.8s cubic-bezier(0.4,0,0.2,1) 0.3s';
+  ekgPath.style.strokeDashoffset = '0';
+  ekgGlow.style.transition = 'stroke-dashoffset 1.8s cubic-bezier(0.4,0,0.2,1) 0.3s, opacity 0.4s 0.3s';
+  ekgGlow.style.strokeDashoffset = '0';
+  ekgGlow.style.opacity = '0.3';
+
+  // Show content after EKG
+  setTimeout(() => {
+    content.classList.add('visible');
+    stats.forEach((s, i) => {
+      setTimeout(() => s.classList.add('show'), i * 200);
+    });
+  }, 1800);
+</script>
+</body>
+</html>
