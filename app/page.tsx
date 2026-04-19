@@ -3,6 +3,7 @@ import CinematicNavbar from "@/components/layout/CinematicNavbar";
 import HeroCinematic from "@/components/hero/HeroCinematic";
 import Faq from "@/components/sections/Faq";
 import FinalCta from "@/components/sections/FinalCta";
+import Flipbook from "@/components/sections/Flipbook";
 import Partners from "@/components/sections/Partners";
 import Pricing from "@/components/sections/Pricing";
 import ScheduleTabs from "@/components/sections/ScheduleTabs";
@@ -18,6 +19,7 @@ export default function Home() {
       <Partners />
       <ScheduleTabs />
       <SpeakersGrid />
+      <Flipbook />
       <Pricing />
       <Faq />
       <FinalCta />
