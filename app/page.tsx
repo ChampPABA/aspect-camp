@@ -1,6 +1,7 @@
 import CinematicFooter from "@/components/layout/CinematicFooter";
 import CinematicNavbar from "@/components/layout/CinematicNavbar";
 import HeroCinematic from "@/components/hero/HeroCinematic";
+import Certificates from "@/components/sections/Certificates";
 import Faq from "@/components/sections/Faq";
 import FinalCta from "@/components/sections/FinalCta";
 import Flipbook from "@/components/sections/Flipbook";
@@ -16,6 +17,7 @@ export default function Home() {
       <CinematicNavbar />
       <HeroCinematic />
       <WhyAccordion />
+      <Certificates />
       <Partners />
       <ScheduleTabs />
       <SpeakersGrid />
