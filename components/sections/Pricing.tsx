@@ -19,11 +19,11 @@ export default function Pricing() {
         </div>
         <h2 className="text-navy-deep">เลือก tier ที่เหมาะกับน้อง</h2>
         <p className="text-navy-deep/60">
-          ราคารวมทุกอย่าง — ที่พัก อาหาร วัสดุ workshop และ Credentials ครบ 3 ชิ้น
+          ราคารวมอาหารกลางวัน + เบรก วัสดุ workshop และ Credentials ครบ 3 ชิ้น
         </p>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5 max-w-[1080px] mx-auto">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-[920px] mx-auto">
         {PRICING_TIERS.map((t) => (
           <div
             key={t.tier}

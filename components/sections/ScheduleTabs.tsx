@@ -17,7 +17,7 @@ export default function ScheduleTabs() {
           ตารางค่าย
         </div>
         <h2 className="text-navy-deep">3 วันที่จะเปลี่ยนมุมมองของน้อง</h2>
-        <p className="text-navy-deep/60">1–3 พฤษภาคม 2568 · เชียงใหม่</p>
+        <p className="text-navy-deep/60">1–3 พฤษภาคม 2569 · Uniserv มช.</p>
       </div>
 
       <div

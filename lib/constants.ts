@@ -1,17 +1,23 @@
-export const LINE_URL = "https://lin.ee/Z1aJYor";
+export const LINE_URL = "https://lin.ee/nSlMCHsZ";
 export const LINE_ID = "@AspectCareer";
 export const INSTAGRAM_HANDLE = "@aspectcareer";
+export const PHONE = "099-378-8111";
+
+export const FLIPBOOK_URL = "https://heyzine.com/flip-book/1ee8f72947.html";
+export const FLIPBOOK_COVER =
+  "https://cdnc.heyzine.com/files/uploaded/v2/1ee8f72947940d877982f5fc962fe28d28574398.pdf-thumb.jpg";
 
 export const NAV_LINKS = [
   { label: "ทำไมต้องค่ายนี้", href: "#why" },
   { label: "ตาราง", href: "#schedule" },
   { label: "วิทยากร", href: "#speakers" },
+  { label: "คู่มือ", href: "#flipbook" },
   { label: "ราคา", href: "#pricing" },
   { label: "FAQ", href: "#faq" },
 ] as const;
 
 export const HERO_INTRO = {
-  label: "Aspect Med Camp · 1–3 พฤษภาคม 2568",
+  label: "Aspect Med Camp · 1–3 พฤษภาคม 2569",
   headline: [
     { text: "ทุกจังหวะ", tone: "default" as const },
     { text: "หัวใจ", tone: "accent" as const },
@@ -23,7 +29,7 @@ export const HERO_INTRO = {
 export const HERO_STATS = [
   { value: "3", label: "วันเต็ม" },
   { value: "60", label: "ที่นั่งจำกัด" },
-  { value: "3", label: "ทุนการศึกษา" },
+  { value: "1", label: "ทุน 100%" },
 ];
 export const HERO_STATS_SUB = "สำหรับนักเรียน ม.4 – ม.6 ที่สนใจเส้นทางแพทย์";
 
@@ -35,7 +41,7 @@ export const HERO_BENEFITS = [
 ];
 
 export const HERO_CTA = {
-  date: "เชียงใหม่ · 1–3 พฤษภาคม 2568",
+  date: "Uniserv มช. · 1–3 พฤษภาคม 2569",
   title: ["พร้อมก้าวแรก", "สู่เส้นทางแพทย์?"],
 };
 
@@ -90,7 +96,7 @@ export const SCHEDULE: ScheduleDay[] = [
     tabLabel: "Day 1 — 1 พ.ค.",
     heading: "Day 1 — Discover & Empathize",
     items: [
-      { time: "08:00–09:00", title: "ลงทะเบียน & เปิดค่าย" },
+      { time: "08:30–09:00", title: "ลงทะเบียน & เปิดค่าย" },
       {
         time: "09:00–10:00",
         title: "Hacking Health: Innovation Method",
@@ -236,51 +242,42 @@ export const PRICING_TIERS: PricingTier[] = [
     tier: "Full Scholarship",
     amount: "ฟรี",
     amountKind: "free",
-    original: "ปกติ 5,500 บาท",
-    slots: "เหลือ 3 ทุน",
+    original: "ปกติ 5,990 บาท",
+    slots: "1 ทุน · คะแนนสูงสุด",
     condition:
-      "คะแนนสูงสุดจากการคัดเลือก + สัมภาษณ์ผ่าน — เข้าค่ายฟรี 100% พร้อม Letter of Recommendation จากแพทย์",
-    ctaLabel: "สมัครทุน →",
+      "ผู้ทำคะแนนข้อสอบคัดเลือกสูงสุด — เข้าค่ายฟรี 100% พร้อมเกียรติบัตรและ Letter of Recommendation",
+    ctaLabel: "สมัครสอบชิงทุน →",
     ctaVariant: "navy",
   },
   {
-    tier: "Half Scholarship",
-    amount: "2,750",
+    tier: "Group of 3",
+    amount: "4,990",
     amountKind: "paid",
-    original: "ปกติ 5,500 บาท",
-    slots: "10 ทุน",
-    condition: "เขียน Essay + แสดง motivation ชัดเจน ลด 50% + Portfolio Review 1 ครั้ง",
-    ctaLabel: "สมัครทุน →",
-    ctaVariant: "outline",
-  },
-  {
-    tier: "Early Bird",
-    amount: "3,900",
-    amountKind: "paid",
-    original: "ปกติ 5,500 บาท",
-    slots: "ราคาพิเศษ",
-    slotsMuted: true,
-    condition: "สมัครก่อนปิด Early Bird — ลด 29% จากราคาปกติ Credentials ครบ 3 ชิ้น",
-    ctaLabel: "สมัคร Early Bird →",
+    original: "ปกติ 5,990 บาท",
+    slots: "ต่อคน · รวมกลุ่ม 3 คน",
+    condition:
+      "สมัครพร้อมเพื่อน 3 คน ลดทันที 1,000 บาท/คน — ได้รับการสนับสนุนจากโครงการและหน่วยงานที่เกี่ยวข้อง",
+    ctaLabel: "สมัครแบบกลุ่ม →",
     ctaVariant: "gold",
     featured: true,
   },
   {
-    tier: "ราคาปกติ",
-    amount: "5,500",
+    tier: "ราคาเต็ม",
+    amount: "5,990",
     amountKind: "paid",
-    slots: "ราคาเต็ม",
+    slots: "สมัครเดี่ยว",
     slotsMuted: true,
-    condition: "สมัครหลังปิด Early Bird — Credentials ครบ 3 ชิ้น + ที่พัก อาหาร ทุกมื้อ",
+    condition:
+      "รวมอาหารกลางวัน + เบรก วัสดุ workshop และ Credentials ครบทุกชิ้น (MicroCredential KMUTT · SET · AI Skill)",
     ctaLabel: "สมัครเลย →",
     ctaVariant: "outline",
   },
 ];
 
 export const PRICING_NOTE = {
-  prefix: "สมัครคู่กับเพื่อน ",
-  bold: "ลดเพิ่มอีก 300 บาท/คน",
-  suffix: " · ราคารวมที่พัก อาหาร วัสดุ workshop และ Credentials ทั้งหมด",
+  prefix: "เปิดรับสมัคร 18–25 เม.ย. 2569 · ",
+  bold: "สอบผ่าน 80% ถึงยืนยันสิทธิ์",
+  suffix: " · สอบไม่ผ่านหรือที่นั่งเต็ม คืนเงินเต็มจำนวน",
 };
 
 export const FAQ_ITEMS = [
@@ -294,15 +291,15 @@ export const FAQ_ITEMS = [
   },
   {
     q: "ค่าใช้จ่ายรวมอะไรบ้าง?",
-    a: "ราคาค่าสมัครรวมทุกอย่าง: ที่พัก 2 คืน อาหารทุกมื้อ วัสดุ workshop ทั้งหมด MicroCredential KMUTT, SET Certificate, AI Skill Certificate และ Portfolio Package ไม่มีค่าใช้จ่ายเพิ่มเติม",
+    a: "ค่ายแบบไป-กลับ (08.30–17.30) ราคารวมอาหารกลางวัน + เบรกทุกวัน วัสดุ workshop ทั้งหมด MicroCredential KMUTT, SET Certificate, AI Skill Certificate และ Portfolio Package — ไม่รวมที่พักและการเดินทาง",
   },
   {
     q: "รับนักเรียนระดับชั้นไหนบ้าง?",
     a: "เปิดรับนักเรียนระดับ ม.4–ม.6 ที่สนใจเส้นทางแพทย์หรือ Healthcare ไม่จำกัดสายการเรียน",
   },
   {
-    q: "ถ้าสมัครทุนแต่ไม่ผ่าน จะเสียสิทธิ์หรือเปล่า?",
-    a: "ไม่เสียสิทธิ์ — น้องสามารถสมัครในราคา Early Bird หรือราคาปกติได้ต่อ ทีมงานจะติดต่อแจ้งผลการคัดเลือกทุนก่อนปิด Early Bird",
+    q: "สอบคัดเลือกไม่ผ่าน 80% จะเป็นยังไง?",
+    a: "ได้รับเงินคืน 100% ทันทีทุกกรณี — โครงการคืนอัตโนมัติเพื่อคงประสบการณ์การเรียนรู้ที่เข้มข้นและดูแลใกล้ชิด ทีมงานจะติดต่อยืนยันผลผ่าน email ภายใน 2 วันทำการ",
   },
 ];
 
@@ -311,7 +308,7 @@ export const FINAL_CTA = {
   titleHigh: "สู่เส้นทาง",
   titleAccent: "แพทย์",
   titleTail: "?",
-  sub: "60 ที่นั่ง · 1–3 พฤษภาคม 2568 · เชียงใหม่",
+  sub: "60 ที่นั่ง · 1–3 พ.ค. 2569 · Uniserv มช.",
 };
 
 export const HERO_FRAME_COUNT = 91;
