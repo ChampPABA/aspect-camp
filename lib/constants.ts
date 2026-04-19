@@ -50,22 +50,60 @@ export const WHY_PILLARS = [
     num: "01",
     image: "/assets/med-camp/why/why-1.webp",
     title: "Medical Innovation & Research Poster",
-    desc: "สร้าง Healthcare Innovation Project แก้ปัญหาสุขภาพจริง ด้วย Design Thinking — กระบวนการที่ Stanford, IDEO ใช้จริง พร้อม Research Poster คุณภาพระดับวิชาการ",
-    usp: "✓ พอร์ต TCAS รอบ 1 ที่กรรมการอยากเห็น",
+    desc: "สอนทำจาก 0 โดย ดร.วรพรหม เหรียญทองนานาชาติ — ได้ Healthcare Innovation Project + Research Poster คุณภาพวิชาการ เข้าพอร์ต TCAS รอบ 1 ด้วย Design Thinking จริง",
   },
   {
     num: "02",
     image: "/assets/med-camp/why/why-2.webp",
     title: "Lab & Workshop Hands-on",
-    desc: "ลงมือทำจริงในสภาพแวดล้อมทางการแพทย์ — Prototype, ทดสอบ, ปรับแก้ ทุก session ออกแบบโดยผู้เชี่ยวชาญ ไม่ใช่แค่นั่งฟัง",
-    usp: "✓ ต่างจากค่ายอื่นที่เน้นดูงานอย่างเดียว",
+    desc: "กิจกรรมครบสายแพทย์ เหมือนได้เข้าไปเรียนจริง! ลงมือ Prototype ทดสอบ ปรับแก้ในสภาพแวดล้อมทางการแพทย์ ทุก session ออกแบบโดยผู้เชี่ยวชาญ",
   },
   {
     num: "03",
     image: "/assets/med-camp/why/why-3.webp",
     title: "Private 1-on-1 Consultation",
-    desc: "ปรึกษาส่วนตัวกับอาจารย์แพทย์และ mentor รายทีม — ได้ feedback ตรงจุด พร้อม Letter of Recommendation สำหรับผู้รับทุน",
-    usp: "✓ ไม่มีค่ายเอกชนรายใดทำแบบนี้",
+    desc: "ปรึกษาตรงสายแพทย์ / ทันตะ / เภสัช — กับอาจารย์แพทย์และ mentor รายทีม ได้ feedback ตรงจุด พร้อม Letter of Recommendation สำหรับผู้รับทุน",
+  },
+];
+
+export type Certificate = {
+  kind: "logo" | "text";
+  logo?: string;
+  logoAlt?: string;
+  badgeMain?: string;
+  badgeSub?: string;
+  title: string;
+  source: string;
+};
+
+export const CERTIFICATES: Certificate[] = [
+  {
+    kind: "logo",
+    logo: "/assets/med-camp/logos/logo-set.png",
+    logoAlt: "SET",
+    title: "เกียรติบัตรจาก SET",
+    source: "Pitching / Design Thinking / Innovation Mindset",
+  },
+  {
+    kind: "logo",
+    logo: "/assets/med-camp/logos/logo-step.png",
+    logoAlt: "STEP CMU",
+    title: "เกียรติบัตร AI Skills",
+    source: "STeP CMU × สกสว. / RSP / อว.",
+  },
+  {
+    kind: "text",
+    badgeMain: "KMUTT",
+    badgeSub: "× GLOBLISH",
+    title: "Digital Badge · Giving an English Presentation",
+    source: "KMUTT × Globlish",
+  },
+  {
+    kind: "text",
+    badgeMain: "PITCH",
+    badgeSub: "AWARD",
+    title: "เกียรติบัตรแข่งขัน Innovation Pitching",
+    source: "ตามลำดับที่ได้จริง",
   },
 ];
 
@@ -219,7 +257,7 @@ export const SPEAKERS: Speaker[] = [
     role: "Research Mentor",
     name: "นางสาววรพรหม พัสธรธัชกร",
     affiliation:
-      "นักศึกษาปริญญาเอก สาขา Perovskite PV\nBest Poster Presentation Award — PhD School, Germany",
+      "นักศึกษาปริญญาเอก สาขา Perovskite PV\nเหรียญทองนานาชาติ — Best Poster Presentation, Germany",
     tag: "🔬 Research Excellence",
   },
 ];

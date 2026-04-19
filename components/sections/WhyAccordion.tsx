@@ -40,7 +40,6 @@ export default function WhyAccordion() {
             <div className="ainfo">
               <h3>{pillar.title}</h3>
               <p>{pillar.desc}</p>
-              <div className="usp-tag">{pillar.usp}</div>
             </div>
           </div>
         ))}
