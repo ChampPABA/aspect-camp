@@ -67,34 +67,34 @@ export const WHY_PILLARS = [
 ];
 
 export type Certificate = {
-  badgeMain: string;
-  badgeSub: string;
+  logo: string;
+  logoAlt: string;
   title: string;
   source: string;
 };
 
 export const CERTIFICATES: Certificate[] = [
   {
-    badgeMain: "SET",
-    badgeSub: "CERTIFIED",
+    logo: "/assets/med-camp/logos/logo-set.png",
+    logoAlt: "SET",
     title: "เกียรติบัตรจาก SET",
     source: "Pitching / Design Thinking / Innovation Mindset",
   },
   {
-    badgeMain: "STeP",
-    badgeSub: "× CMU",
+    logo: "/assets/med-camp/logos/logo-step.png",
+    logoAlt: "STeP CMU",
     title: "เกียรติบัตร AI Skills",
     source: "STeP CMU × สกสว. / RSP / อว.",
   },
   {
-    badgeMain: "KMUTT",
-    badgeSub: "× GLOBLISH",
+    logo: "/assets/med-camp/logos/logo-kmutt.svg",
+    logoAlt: "KMUTT",
     title: "Digital Badge · Giving an English Presentation",
     source: "KMUTT × Globlish",
   },
   {
-    badgeMain: "ASPECT",
-    badgeSub: "MED CAMP",
+    logo: "/assets/med-camp/logos/logo.png",
+    logoAlt: "Aspect Med Camp",
     title: "เกียรติบัตรแข่งขัน Innovation Pitching",
     source: "ตามลำดับที่ได้จริง",
   },

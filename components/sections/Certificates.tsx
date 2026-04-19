@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { CERTIFICATES } from "@/lib/constants";
 
 export default function Certificates() {
@@ -20,15 +21,14 @@ export default function Certificates() {
             key={c.title}
             className="bg-white/[0.04] border border-white/10 rounded-[20px] p-7 flex flex-col items-center text-center transition-[transform,border-color,background-color] duration-300 hover:-translate-y-1 hover:border-gold/35 hover:bg-white/[0.06]"
           >
-            <div className="h-24 w-full flex items-center justify-center mb-5">
-              <div className="inline-flex flex-col items-center justify-center px-7 py-4 border-[1.5px] border-gold/55 rounded-md">
-                <span className="text-gold font-extrabold tracking-[0.12em] text-[26px] leading-none">
-                  {c.badgeMain}
-                </span>
-                <span className="text-cream/70 text-[11px] tracking-[0.22em] mt-2">
-                  {c.badgeSub}
-                </span>
-              </div>
+            <div className="mb-5 bg-white rounded-2xl w-[220px] h-[96px] flex items-center justify-center shadow-[0_4px_14px_rgba(0,0,0,0.18)]">
+              <Image
+                src={c.logo}
+                alt={c.logoAlt}
+                width={200}
+                height={80}
+                className="max-h-[60px] max-w-[180px] w-auto h-auto object-contain"
+              />
             </div>
             <h3 className="text-[17px] font-bold mb-2 leading-snug">
               {c.title}
