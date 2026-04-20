@@ -81,22 +81,22 @@ export const CERTIFICATES: Certificate[] = [
     source: "Pitching / Design Thinking / Innovation Mindset",
   },
   {
-    logo: "/assets/med-camp/logos/logo-step.png",
-    logoAlt: "STeP CMU",
+    logo: "/assets/med-camp/logos/logo-ai.svg",
+    logoAlt: "AI Skills Training",
     title: "เกียรติบัตร AI Skills",
     source: "STeP CMU × สกสว. / RSP / อว.",
   },
   {
-    logo: "/assets/med-camp/logos/logo-kmutt.svg",
-    logoAlt: "KMUTT",
+    logo: "/assets/med-camp/logos/logo-kmutt-globish.png",
+    logoAlt: "KMUTT × Globish",
     title: "Digital Badge · Giving an English Presentation",
-    source: "KMUTT × Globlish",
+    source: "KMUTT × Globish",
   },
   {
-    logo: "/assets/med-camp/logos/logo.png",
-    logoAlt: "Aspect Med Camp",
-    title: "เกียรติบัตรแข่งขัน Innovation Pitching",
-    source: "ตามลำดับที่ได้จริง",
+    logo: "/assets/med-camp/logos/logo-4life.svg",
+    logoAlt: "4LifelongLearning",
+    title: "Micro-Credential · Innovation Pitching",
+    source: "4LifelongLearning × Aspect",
   },
 ];
 
